@@ -325,33 +325,43 @@
 
         .phone-wrapper {
             position: relative;
-            padding: 12px;
-            border-radius: 52px;
-            background: linear-gradient(180deg, rgba(0,212,255,0.8) 0%, rgba(34,197,94,0.8) 50%, rgba(249,115,22,0.6) 100%);
-            animation: borderGlow 4s ease-in-out infinite;
-            box-shadow: 
-                0 0 100px rgba(0, 212, 255, 0.4),
-                0 0 150px rgba(34, 197, 94, 0.3),
-                inset 0 0 30px rgba(0, 212, 255, 0.2);
+            padding: 4px;
+            border-radius: 44px;
+            background: linear-gradient(135deg, #00D4FF, #22c55e);
             transition: transform 0.3s ease;
             transform-style: preserve-3d;
         }
 
-        .phone-wrapper:hover {
-            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg) scale(1.02);
+        /* Glow effect like the photo - using ::before */
+        .phone-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(135deg, #00D4FF, #0066FF, #8B5CF6);
+            border-radius: 64px;
+            z-index: -1;
+            filter: blur(30px);
+            opacity: 0.7;
+            animation: glowPulse 4s ease-in-out infinite;
         }
 
-        @keyframes borderGlow {
-            0%, 100% { 
-                box-shadow: 
-                    0 0 100px rgba(0, 212, 255, 0.4),
-                    0 0 150px rgba(34, 197, 94, 0.3);
-            }
-            50% { 
-                box-shadow: 
-                    0 0 120px rgba(0, 212, 255, 0.6),
-                    0 0 180px rgba(34, 197, 94, 0.4);
-            }
+        .phone-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.5), rgba(0,102,255,0.4));
+            border-radius: 54px;
+            z-index: -1;
+            filter: blur(15px);
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+
+        .phone-wrapper:hover {
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg) scale(1.02);
         }
 
         .phone-mockup {
