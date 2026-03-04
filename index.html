@@ -327,16 +327,17 @@
             position: relative;
             padding: 4px;
             border-radius: 44px;
-            background: linear-gradient(135deg, rgba(0,212,255,0.5), rgba(0,102,255,0.4));
+            background: linear-gradient(0deg, rgba(0,212,255,0.6), rgba(34,197,94,0.6));
+            animation: borderRotate 3s linear infinite;
             box-shadow: 
-                0 0 60px rgba(0, 212, 255, 0.4),
-                0 0 100px rgba(0, 102, 255, 0.3);
-            animation: phoneFloat 6s ease-in-out infinite;
+                0 0 80px rgba(0, 212, 255, 0.5),
+                0 0 120px rgba(34, 197, 94, 0.4),
+                0 0 160px rgba(249, 115, 22, 0.2);
         }
 
-        @keyframes phoneFloat {
-            0%, 100% { transform: translateY(0) rotateY(-5deg); }
-            50% { transform: translateY(-15px) rotateY(5deg); }
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         .phone-mockup {
@@ -1282,7 +1283,7 @@
                     <div class="phone-mockup">
                         <div class="phone-screen">
                             <div class="caller-avatar">
-                                <svg viewBox="0 0 24 24" width="35" height="35"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                <svg viewBox="0 0 24 24" width="35" height="35"><path fill="white" d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.38-1 1.72v.78h3c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8.5c0-1.1.9-2 2-2h3v-.78c-.6-.34-1-.98-1-1.72a2 2 0 0 1 2-2M6 15h12v-1.5H6V15zm0-3h12v-1.5H6V12zm0-3h12V7.5H6V9zm6-8a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1z"/></svg>
                             </div>
                             <div class="caller-name">María — Instant Qualifier™</div>
                             <div class="caller-status">
