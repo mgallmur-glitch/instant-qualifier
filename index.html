@@ -192,6 +192,14 @@
             overflow: visible;
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 50px 1rem 60px;
+                align-items: flex-start;
+            }
+        }
+
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -309,25 +317,30 @@
         
         @media (max-width: 768px) {
             .hero-visual { 
-                transform: scale(0.85); 
-                margin: 0;
-                padding: 5px 0;
+                transform: scale(1.05);
+                margin: 20px auto 40px;
+                padding: 0;
             }
             .phone-wrapper {
                 box-shadow: 
                     0 0 40px rgba(0, 212, 255, 0.3),
                     0 0 80px rgba(0, 102, 255, 0.2);
-                margin: 0;
+                margin: 0 auto;
+                width: 92%;
+                max-width: 340px;
             }
         }
         
         @media (max-width: 480px) {
             .hero-visual { 
-                transform: scale(0.75); 
+                transform: scale(1.02);
+                margin: 15px auto 30px;
                 padding: 0;
             }
             .phone-wrapper {
-                margin: 0;
+                margin: 0 auto;
+                width: 95%;
+                max-width: 320px;
             }
         }
 
@@ -359,6 +372,21 @@
             padding: 8px;
             position: relative;
             overflow: visible;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 260/520;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .phone-mockup {
+                max-width: 280px;
+            }
         }
 
         .phone-mockup::before {
@@ -1216,6 +1244,20 @@
             .about-photo-name { font-size: 1rem; }
             
             .code-block { font-size: 0.6875rem; padding: 1rem; overflow-x: auto; }
+
+            /* Mobile hero improvements */
+            .hero-container {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .hero-visual {
+                order: 1;
+            }
         }
 
         @media (max-width: 480px) {
