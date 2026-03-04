@@ -5,147 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Closing Code AI — Closing Cuántico™</title>
     <meta name="description" content="La metodología que la IA aplica en cada llamada de precualificación. Tu closer deja de adivinar. Empieza a cerrar de forma consistente.">
-    
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* ========================================
-           $500k USD DESIGN SYSTEM
-           ======================================== */
-        
         :root {
-            /* Colors - Void & Nebula Theme */
             --void-900: #030308;
             --void-800: #060610;
             --void-700: #0a0a18;
             --void-600: #101028;
-            
-            /* Stark Accents */
             --stark-blue: #0066FF;
-            --stark-blue-glow: rgba(0, 102, 255, 0.5);
+            --stark-blue-glow: rgba(0, 102, 255, 0.6);
             --electric-cyan: #00D4FF;
-            --electric-cyan-glow: rgba(0, 212, 255, 0.4);
+            --electric-cyan-glow: rgba(0, 212, 255, 0.6);
             --nebula-purple: #8B5CF6;
-            --nebula-glow: rgba(139, 92, 246, 0.5);
-            
-            /* Gradients */
+            --nebula-glow: rgba(139, 92, 246, 0.6);
             --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00D4FF 100%);
-            --gradient-glow: linear-gradient(135deg, rgba(0,102,255,0.4) 0%, rgba(0,212,255,0.2) 100%);
-            --gradient-purple: linear-gradient(135deg, #8B5CF6 0%, #0066FF 100%);
-            
-            /* Glass Effects */
+            --gradient-animated: conic-gradient(from 0deg, #00D4FF, #0066FF, #8B5CF6, #00D4FF);
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-blur: blur(20px);
-            
-            /* Typography */
             --font-display: 'Space Grotesk', sans-serif;
             --font-body: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            
-            /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-2xl: 4rem;
-            --space-3xl: 6rem;
-            
-            /* Shadows */
-            --shadow-glow-blue: 0 0 40px rgba(0, 102, 255, 0.3);
-            --shadow-glow-cyan: 0 0 60px rgba(0, 212, 255, 0.2);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--void-800);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { 
+            font-family: var(--font-body); 
+            background: var(--void-800); 
+            color: white; 
+            line-height: 1.6; 
+            overflow-x: hidden; 
             min-height: 100vh;
         }
 
-        /* ========================================
-           BACKGROUND EFFECTS - $500k Level
-           ======================================== */
-        
+        /* Background Effects */
         .bg-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             overflow: hidden;
             background: var(--void-800);
         }
 
-        /* Aurora Boreal Effect */
         .aurora {
             position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
+            width: 200%; height: 200%;
+            top: -50%; left: -50%;
             background: 
-                radial-gradient(ellipse at 20% 30%, rgba(0, 102, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 40% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 40%);
-            animation: auroraFlow 25s ease-in-out infinite;
+                radial-gradient(ellipse at 20% 30%, rgba(0, 102, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%);
+            animation: auroraFlow 20s ease-in-out infinite;
             pointer-events: none;
         }
 
         @keyframes auroraFlow {
-            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            33% { transform: translate(2%, -2%) rotate(1deg) scale(1.02); }
-            66% { transform: translate(-1%, 2%) rotate(-1deg) scale(0.98); }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(2%, -1%) rotate(1deg); }
         }
 
-        /* Particle Canvas */
         #particles-canvas {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
         }
 
-        /* ========================================
-           NAVIGATION
-           ======================================== */
-        
+        /* Navigation */
         .nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         .nav.scrolled {
-            background: rgba(6, 6, 16, 0.8);
+            background: rgba(6, 6, 16, 0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .nav-container {
@@ -165,8 +104,7 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: var(--gradient-primary);
             border-radius: 10px;
             display: flex;
@@ -176,7 +114,7 @@
             font-weight: 700;
             font-size: 1.125rem;
             color: white;
-            box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
         }
 
         .logo-text {
@@ -200,9 +138,7 @@
             transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: white;
-        }
+        .nav-link:hover { color: white; }
 
         .btn {
             display: inline-flex;
@@ -221,12 +157,12 @@
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
-            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 102, 255, 0.5);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.6);
+            box-shadow: 0 8px 40px rgba(0, 102, 255, 0.7);
         }
 
         .btn-secondary {
@@ -237,12 +173,10 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
         }
 
-        /* ========================================
-           HERO SECTION - $500k Level
-           ======================================== */
-        
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -276,7 +210,7 @@
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1rem;
@@ -284,71 +218,58 @@
         }
 
         .hero-title span {
-            background: var(--gradient-purple);
+            background: linear-gradient(135deg, #0066FF 0%, #00D4FF 50%, #8B5CF6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--electric-cyan);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .hero-text {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.125rem;
+            font-size: 1rem;
             line-height: 1.7;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             max-width: 480px;
         }
 
-        /* Code Block */
         .code-block {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.25rem;
             font-family: var(--font-mono);
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
-            overflow-x: auto;
+            margin-bottom: 1.5rem;
         }
 
-        .code-comment {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .code-key {
-            color: var(--electric-cyan);
-        }
-
-        .code-value {
-            color: white;
-        }
+        .code-comment { color: rgba(255, 255, 255, 0.4); }
+        .code-key { color: var(--electric-cyan); }
+        .code-value { color: white; }
 
         .hero-ctas {
             display: flex;
             gap: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .hero-metrics {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .metric {
-            text-align: left;
+            gap: 1.5rem;
         }
 
         .metric-value {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
@@ -357,42 +278,58 @@
         }
 
         .metric-label {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             color: rgba(255, 255, 255, 0.6);
             margin-top: 0.25rem;
         }
 
-        /* Phone Mockup 3D */
+        /* Phone Mockup with Animated Border */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
+            perspective: 1000px;
+        }
+
+        .phone-wrapper {
+            position: relative;
+            padding: 4px;
+            border-radius: 44px;
+            background: linear-gradient(0deg, rgba(0,212,255,0.3), rgba(0,102,255,0.3));
+            animation: borderRotate 4s linear infinite;
+            box-shadow: 
+                0 0 80px rgba(0, 212, 255, 0.4),
+                0 0 120px rgba(0, 102, 255, 0.2);
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         .phone-mockup {
-            position: relative;
-            width: 280px;
-            height: 560px;
+            width: 260px;
+            height: 520px;
             background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
             border-radius: 40px;
-            padding: 12px;
-            box-shadow: 
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 0 60px rgba(0, 102, 255, 0.3),
-                0 0 100px rgba(139, 92, 246, 0.2),
-                inset 0 0 60px rgba(0, 102, 255, 0.1);
-            animation: phoneFloat 6s ease-in-out infinite;
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes phoneFloat {
-            0%, 100% { transform: translateY(0) rotateY(-5deg); }
-            50% { transform: translateY(-20px) rotateY(-5deg); }
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(139,92,246,0.1));
+            border-radius: 40px;
+            z-index: -1;
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: var(--void-800);
+            background: linear-gradient(180deg, #0a0a18 0%, #060610 100%);
             border-radius: 32px;
             overflow: hidden;
             display: flex;
@@ -400,29 +337,28 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .caller-avatar {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-purple);
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, #8B5CF6, #0066FF);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
         }
 
         .caller-avatar svg {
-            width: 40px;
-            height: 40px;
+            width: 35px; height: 35px;
             fill: white;
         }
 
         .caller-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             margin-bottom: 0.5rem;
         }
 
@@ -430,144 +366,120 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--electric-cyan);
+            font-size: 0.8125rem;
+            color: #22c55e;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--electric-cyan);
+            width: 8px; height: 8px;
+            background: #22c55e;
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
         }
 
         .audio-waves {
             display: flex;
-            gap: 4px;
-            margin-top: 2rem;
-            height: 40px;
+            gap: 3px;
+            margin-top: 1.5rem;
+            height: 30px;
             align-items: center;
         }
 
         .wave-bar {
-            width: 4px;
-            background: var(--gradient-primary);
+            width: 3px;
+            background: linear-gradient(to top, #0066FF, #00D4FF);
             border-radius: 2px;
             animation: wave 1s ease-in-out infinite;
         }
 
-        .wave-bar:nth-child(1) { height: 20%; animation-delay: 0s; }
-        .wave-bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
-        .wave-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
-        .wave-bar:nth-child(4) { height: 80%; animation-delay: 0.3s; }
-        .wave-bar:nth-child(5) { height: 50%; animation-delay: 0.4s; }
+        .wave-bar:nth-child(1) { height: 15%; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 45%; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 30%; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 60%; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 40%; animation-delay: 0.4s; }
 
         @keyframes wave {
             0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.5); }
+            50% { transform: scaleY(1.8); }
         }
 
         .call-buttons {
             position: absolute;
-            bottom: 2rem;
+            bottom: 1.5rem;
             display: flex;
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .call-btn {
-            width: 56px;
-            height: 56px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: none;
             cursor: pointer;
+            font-size: 1.25rem;
             transition: transform 0.3s ease;
         }
 
-        .call-btn:hover {
-            transform: scale(1.1);
-        }
+        .call-btn:hover { transform: scale(1.1); }
+        .call-btn-decline { background: #ef4444; box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5); }
+        .call-btn-accept { background: #22c55e; box-shadow: 0 4px 20px rgba(34, 197, 94, 0.5); }
 
-        .call-btn-decline {
-            background: #ef4444;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
-        }
-
-        .call-btn-accept {
-            background: #22c55e;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
-        }
-
-        /* ========================================
-           SECTIONS GENERAL
-           ======================================== */
+        /* Sections General */
+        section { padding: 5rem 1.5rem; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; }
         
-        section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .section-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 4rem;
+            margin: 0 auto 3rem;
         }
 
         .eyebrow {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--electric-cyan);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-text {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.125rem;
+            font-size: 1rem;
         }
 
-        /* ========================================
-           PROBLEM SECTION
-           ======================================== */
-        
-        .problem {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        /* Problem Section */
+        .problem { background: rgba(255, 255, 255, 0.02); }
 
         .problem-list {
             list-style: none;
-            margin: 2rem 0;
+            max-width: 600px;
+            margin: 1.5rem auto;
         }
 
         .problem-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 0;
+            gap: 0.75rem;
+            padding: 0.875rem 0;
             color: rgba(255, 255, 255, 0.8);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9375rem;
         }
 
         .problem-item::before {
@@ -580,229 +492,212 @@
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.2);
             border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 1.25rem;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            font-size: 0.9375rem;
         }
 
-        .problem-result strong {
-            color: #fca5a5;
-        }
+        .problem-result strong { color: #fca5a5; }
 
         .problem-closing {
             text-align: center;
-            margin-top: 3rem;
-            font-size: 1.25rem;
+            margin-top: 2rem;
+            font-size: 1.125rem;
         }
 
-        .problem-closing strong {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
+        .problem-closing strong { display: block; margin-bottom: 0.25rem; }
 
-        /* ========================================
-           SOLUTION CARDS
-           ======================================== */
-        
+        /* 3D Tilt Cards */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
+            perspective: 1000px;
         }
 
         .card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 102, 255, 0.3);
-            box-shadow: var(--shadow-glow-blue);
+            border-color: rgba(0, 102, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px; height: 44px;
             background: var(--gradient-primary);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .card-title {
             font-family: var(--font-display);
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .card-text {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             line-height: 1.6;
         }
 
-        /* ========================================
-           METHODOLOGY SECTION
-           ======================================== */
-        
-        .methodology {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        /* Methodology */
+        .methodology { background: rgba(255, 255, 255, 0.02); }
 
         .method-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
+            perspective: 1000px;
         }
 
         .method-card {
             background: rgba(0, 102, 255, 0.05);
             border: 1px solid rgba(0, 102, 255, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
         .method-card:hover {
-            transform: translateY(-8px);
             background: rgba(0, 102, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.25);
         }
 
         .method-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
         }
 
         .method-title {
             font-family: var(--font-display);
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--electric-cyan);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .method-text {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
         }
 
-        /* ========================================
-           PROFILES SECTION
-           ======================================== */
-        
+        /* Profiles */
         .profiles-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 800px;
+            gap: 1rem;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .profile-card {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.1s ease, border-color 0.3s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
         .profile-card:hover {
-            border-color: rgba(0, 102, 255, 0.3);
-            transform: translateY(-4px);
+            border-color: rgba(0, 102, 255, 0.4);
         }
 
-        .profile-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+        .profile-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 
         .profile-name {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .profile-bar {
             font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin: 0.5rem 0;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
             letter-spacing: 2px;
+            margin: 0.5rem 0;
         }
 
         .profile-status {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* ========================================
-           RESULTS SECTION
-           ======================================== */
-        
-        .results {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        /* Results */
+        .results { background: rgba(255, 255, 255, 0.02); }
 
         .results-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .result-card {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .result-number {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .result-label {
             color: rgba(255, 255, 255, 0.6);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
         }
 
         /* Testimonials */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .testimonial {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 12px;
+            padding: 1.5rem;
             position: relative;
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
         .testimonial::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 2rem;
-            bottom: 2rem;
+            left: 0; top: 1.5rem; bottom: 1.5rem;
             width: 3px;
             background: var(--gradient-primary);
             border-radius: 0 3px 3px 0;
@@ -810,18 +705,19 @@
 
         .testimonial-text {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
         }
 
         .testimonial-author {
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            font-size: 0.9375rem;
+            margin-bottom: 0.125rem;
         }
 
         .testimonial-role {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.5);
         }
 
@@ -829,8 +725,8 @@
         .integrations {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
+            gap: 0.75rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
 
@@ -838,72 +734,72 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
+            padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 100px;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* ========================================
-           HOW IT WORKS
-           ======================================== */
-        
+        /* How It Works */
         .step {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            border-radius: 20px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
         }
 
         .step-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .step-number {
             font-family: var(--font-mono);
             color: var(--stark-blue);
             font-weight: 600;
+            font-size: 0.8125rem;
         }
 
         .step-title {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
         .step-text {
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.9375rem;
         }
 
-        /* Brief Visual */
         .brief-visual {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 10px;
+            padding: 1rem;
             font-family: var(--font-mono);
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
         }
 
         .brief-header {
             color: var(--electric-cyan);
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .brief-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.375rem;
             color: rgba(255, 255, 255, 0.6);
         }
 
@@ -913,10 +809,7 @@
             letter-spacing: 2px;
         }
 
-        /* ========================================
-           CTA SECTIONS
-           ======================================== */
-        
+        /* CTA Section */
         .cta-section {
             background: linear-gradient(180deg, rgba(0, 102, 255, 0.1) 0%, transparent 100%);
             text-align: center;
@@ -924,94 +817,91 @@
 
         .cta-title {
             font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .cta-text {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .trust-signals {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            font-size: 0.875rem;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
         }
 
-        /* ========================================
-           PRICING
-           ======================================== */
-        
-        .pricing {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        /* Pricing */
+        .pricing { background: rgba(255, 255, 255, 0.02); }
 
         .pricing-card {
-            max-width: 480px;
+            max-width: 420px;
             margin: 0 auto;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
         }
 
         .pricing-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: var(--gradient-primary);
         }
 
         .pricing-name {
             font-family: var(--font-mono);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: var(--electric-cyan);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .pricing-amount {
             font-family: var(--font-display);
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .pricing-period {
             color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.9375rem;
         }
 
         .pricing-note {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-features {
             list-style: none;
             text-align: left;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-features li {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
+            gap: 0.625rem;
+            padding: 0.625rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
         }
 
         .pricing-features li::before {
@@ -1022,26 +912,27 @@
 
         /* FAQ */
         .faq-list {
-            max-width: 800px;
-            margin: 3rem auto 0;
+            max-width: 700px;
+            margin: 2rem auto 0;
         }
 
         .faq-item {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            margin-bottom: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 0.625rem;
             overflow: hidden;
+            transition: transform 0.1s ease;
         }
 
         .faq-question {
             width: 100%;
-            padding: 1.25rem;
+            padding: 1rem;
             background: none;
             border: none;
             color: white;
             text-align: left;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 500;
             cursor: pointer;
             display: flex;
@@ -1050,72 +941,58 @@
         }
 
         .faq-answer {
-            padding: 0 1.25rem 1.25rem;
+            padding: 0 1rem 1rem;
             color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             line-height: 1.6;
             display: none;
         }
 
-        .faq-item.active .faq-answer {
-            display: block;
-        }
+        .faq-item.active .faq-answer { display: block; }
 
-        /* ========================================
-           ABOUT SECTION
-           ======================================== */
-        
-        .about {
-            background: rgba(255, 255, 255, 0.02);
-        }
+        /* About - Photo with Intense Glow */
+        .about { background: rgba(255, 255, 255, 0.02); }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: center;
-        }
-
-        .about-image {
-            position: relative;
         }
 
         .about-photo-wrapper {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
+            margin: 0 auto;
         }
 
-        /* Multiple layered glows for premium effect */
+        /* Intense multi-layer glow */
         .about-photo-wrapper::before {
             content: '';
             position: absolute;
-            inset: -15px;
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.8) 0%, 
-                rgba(0, 102, 255, 0.6) 50%,
-                rgba(139, 92, 246, 0.5) 100%);
+            inset: -20px;
+            background: conic-gradient(from 0deg, #00D4FF, #0066FF, #8B5CF6, #00D4FF);
             border-radius: 40px;
             z-index: -1;
-            filter: blur(40px);
-            animation: glowPulse 4s ease-in-out infinite;
+            filter: blur(30px);
+            opacity: 0.8;
+            animation: glowRotate 8s linear infinite;
         }
 
         .about-photo-wrapper::after {
             content: '';
             position: absolute;
-            inset: -8px;
-            background: linear-gradient(135deg, 
-                rgba(0, 212, 255, 0.4) 0%, 
-                rgba(139, 92, 246, 0.3) 100%);
+            inset: -10px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.5), rgba(0,102,255,0.4));
             border-radius: 32px;
             z-index: -1;
-            filter: blur(20px);
+            filter: blur(15px);
         }
 
-        @keyframes glowPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
+        @keyframes glowRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .about-photo {
@@ -1123,13 +1000,14 @@
             aspect-ratio: 3/4;
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.3);
             position: relative;
             background: var(--void-700);
             box-shadow: 
-                0 0 60px rgba(0, 102, 255, 0.3),
-                0 0 120px rgba(0, 212, 255, 0.2),
-                inset 0 0 60px rgba(0, 102, 255, 0.1);
+                0 0 60px rgba(0, 102, 255, 0.4),
+                0 0 100px rgba(0, 212, 255, 0.2),
+                inset 0 0 40px rgba(0, 102, 255, 0.1);
+            transition: transform 0.1s ease;
+            transform-style: preserve-3d;
         }
 
         .about-photo img {
@@ -1137,11 +1015,6 @@
             height: 100%;
             object-fit: cover;
             object-position: center top;
-            transition: transform 0.5s ease;
-        }
-
-        .about-photo:hover img {
-            transform: scale(1.03);
         }
 
         .about-photo-overlay {
@@ -1149,58 +1022,32 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2rem 1.5rem 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
-            text-align: left;
+            padding: 2rem 1.25rem 1.25rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
         }
 
         .about-photo-name {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: white;
             letter-spacing: 0.02em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .about-photo-role {
-            font-size: 0.9375rem;
+            font-size: 0.8125rem;
             color: var(--electric-cyan);
             margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        .about-info {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            right: 1.5rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1.25rem;
-            border-radius: 12px;
-        }
-
-        .about-name {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .about-role {
-            font-size: 0.875rem;
-            color: var(--electric-cyan);
         }
 
         .about-text {
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .about-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.875rem;
+            font-size: 0.9375rem;
         }
 
         .about-highlight {
@@ -1208,12 +1055,9 @@
             font-weight: 600;
         }
 
-        /* ========================================
-           FOOTER
-           ======================================== */
-        
+        /* Footer */
         footer {
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -1223,119 +1067,79 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
+        .footer-brand { display: flex; flex-direction: column; gap: 0.125rem; }
+        .footer-name { font-weight: 700; }
+        .footer-tagline { font-size: 0.6875rem; color: rgba(255, 255, 255, 0.5); }
 
-        .footer-name {
-            font-weight: 700;
-        }
-
-        .footer-tagline {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
+        .footer-links { display: flex; gap: 1.5rem; }
 
         .footer-link {
             color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
         }
 
-        .footer-link:hover {
-            color: white;
-        }
+        .footer-link:hover { color: white; }
 
         .footer-copyright {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* ========================================
-           RESPONSIVE
-           ======================================== */
-        
+        /* Responsive */
         @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-ctas {
-                justify-content: center;
-            }
-
-            .hero-metrics {
-                justify-content: center;
-            }
-
-            .cards-grid,
-            .method-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-text { margin-left: auto; margin-right: auto; }
+            .hero-ctas { justify-content: center; }
+            .hero-metrics { justify-content: center; }
+            .cards-grid, .method-cards { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-photo-wrapper { margin-bottom: 1.5rem; }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .cards-grid,
-            .method-cards,
-            .profiles-grid,
-            .results-grid,
-            .testimonials-grid {
+            .nav-links { display: none; }
+            .hero { padding: 6rem 1rem 3rem; min-height: auto; }
+            .hero-title { font-size: 1.75rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-metrics { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+            .metric-value { font-size: 1.25rem; }
+            .metric-label { font-size: 0.625rem; }
+            
+            section { padding: 3rem 1rem; }
+            .section-title { font-size: 1.5rem; }
+            
+            .cards-grid, .method-cards, .profiles-grid, .results-grid, .testimonials-grid {
                 grid-template-columns: 1fr;
             }
-
-            .hero-metrics {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            
+            .card, .method-card, .profile-card, .testimonial, .step, .pricing-card, .faq-item {
+                padding: 1.25rem;
             }
+            
+            .phone-wrapper { transform: scale(0.85); }
+            .trust-signals { flex-direction: column; gap: 0.25rem; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .integrations { gap: 0.5rem; }
+            .integration-item { font-size: 0.75rem; padding: 0.375rem 0.75rem; }
+        }
 
-            .metric {
-                text-align: center;
-            }
-
-            .trust-signals {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
+        @media (max-width: 480px) {
+            .phone-wrapper { transform: scale(0.75); }
+            .hero-metrics { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
     <div class="bg-container">
         <div class="aurora"></div>
         <canvas id="particles-canvas"></canvas>
     </div>
 
-    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="#" class="logo">
@@ -1352,7 +1156,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -1392,26 +1195,28 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <div class="caller-avatar">
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        </div>
-                        <div class="caller-name">María — Instant Qualifier™</div>
-                        <div class="caller-status">
-                            <span class="status-dot"></span>
-                            Cualificando lead...
-                        </div>
-                        <div class="audio-waves">
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                        </div>
-                        <div class="call-buttons">
-                            <button class="call-btn call-btn-decline">✕</button>
-                            <button class="call-btn call-btn-accept">📞</button>
+                <div class="phone-wrapper">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="caller-avatar">
+                                <svg viewBox="0 0 24 24" width="35" height="35"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <div class="caller-name">María — Instant Qualifier™</div>
+                            <div class="caller-status">
+                                <span class="status-dot"></span>
+                                Cualificando lead...
+                            </div>
+                            <div class="audio-waves">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                            <div class="call-buttons">
+                                <button class="call-btn call-btn-decline">✕</button>
+                                <button class="call-btn call-btn-accept">📞</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1419,7 +1224,6 @@
         </div>
     </section>
 
-    <!-- Problem Section -->
     <section class="problem" id="problema">
         <div class="container">
             <div class="section-header">
@@ -1443,7 +1247,6 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
     <section class="solution" id="solucion">
         <div class="container">
             <div class="section-header">
@@ -1452,32 +1255,32 @@
                 <p class="section-text">Tu closer pasa de 30 llamadas a 12. Pero cierra el doble.</p>
             </div>
             <div class="cards-grid">
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">📞</div>
                     <h3 class="card-title">Llamada Automática en 5 Min</h3>
                     <p class="card-text">Cada lead que agenda recibe una llamada de IA en 5 minutos. Voz natural en español neutro.</p>
                 </div>
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">📋</div>
                     <h3 class="card-title">Cualificación en 90 Segundos</h3>
                     <p class="card-text">La IA evalúa presupuesto, autoridad y urgencia en menos de 2 minutos.</p>
                 </div>
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">🎯</div>
                     <h3 class="card-title">Solo Calificados a tu Closer</h3>
                     <p class="card-text">Tu equipo de ventas solo habla con prospectos listos para comprar.</p>
                 </div>
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">✕</div>
                     <h3 class="card-title">Cancela Citas Automáticamente</h3>
                     <p class="card-text">Las reuniones con no-calificados se cancelan automáticamente. Tú ahorras tiempo.</p>
                 </div>
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">📊</div>
                     <h3 class="card-title">Reportes Detallados</h3>
                     <p class="card-text">Sabes exactamente por qué cada lead fue rechazado. Datos para optimizar tu funnel.</p>
                 </div>
-                <div class="card">
+                <div class="card tilt-card">
                     <div class="card-icon">🛡️</div>
                     <h3 class="card-title">Protege a tu Equipo</h3>
                     <p class="card-text">Tu closer deja de quemarse. Mantiene energía para cerrar a los verdaderos compradores.</p>
@@ -1486,7 +1289,6 @@
         </div>
     </section>
 
-    <!-- Methodology Section -->
     <section class="methodology" id="metodologia">
         <div class="container">
             <div class="section-header">
@@ -1494,17 +1296,17 @@
                 <h2 class="section-title">El Closing Cuántico™ no es tecnología.<br>Es el framework que la tecnología ejecuta.</h2>
             </div>
             <div class="method-cards">
-                <div class="method-card">
+                <div class="method-card tilt-card">
                     <div class="method-icon">⬡</div>
                     <h3 class="method-title">PERFIL CQ DETECTADO</h3>
                     <p class="method-text">La IA identifica cuál de los 4 perfiles del Closing Cuántico™ es el prospecto.</p>
                 </div>
-                <div class="method-card">
+                <div class="method-card tilt-card">
                     <div class="method-icon">⚡</div>
                     <h3 class="method-title">SISTEMA ASIGNADO</h3>
                     <p class="method-text">De los 6 sistemas del Closing Cuántico™, asigna el correcto para ese prospecto.</p>
                 </div>
-                <div class="method-card">
+                <div class="method-card tilt-card">
                     <div class="method-icon">📋</div>
                     <h3 class="method-title">BRIEF ENVIADO</h3>
                     <p class="method-text">A tu closer 15 minutos antes. Sin improvisación. Con sistema.</p>
@@ -1513,51 +1315,46 @@
         </div>
     </section>
 
-    <!-- Profiles Section -->
     <section class="profiles" id="perfiles">
         <div class="container">
             <div class="section-header">
                 <div class="eyebrow">EL PROBLEMA QUE NADIE ESTÁ NOMBRANDO</div>
                 <h2 class="section-title">Hay 4 tipos de prospectos.<br>Tu closer probablemente aún no sabe identificarlos.</h2>
-                <p class="section-text">Años analizando equipos de ventas high-ticket en el mercado hispanohablante y USA revelan el mismo patrón en cada negocio que no escala.</p>
+                <p class="section-text">Años analizando equipos de ventas high-ticket revelan el mismo patrón.</p>
             </div>
-            <h3 style="text-align: center; margin-bottom: 2rem; font-family: var(--font-display); font-size: 1.25rem;">Los 4 Perfiles del Closing Cuántico™</h3>
+            <h3 style="text-align: center; margin-bottom: 1.5rem; font-family: var(--font-display); font-size: 1.125rem;">Los 4 Perfiles del Closing Cuántico™</h3>
             <div class="profiles-grid">
-                <div class="profile-card">
+                <div class="profile-card tilt-card">
                     <div class="profile-icon">⚡</div>
                     <div class="profile-name">EL ACTIVADOR</div>
                     <div class="profile-bar">██████████████</div>
                     <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card tilt-card">
                     <div class="profile-icon">🔵</div>
                     <div class="profile-name">EL ESCÉPTICO</div>
                     <div class="profile-bar">██████████████</div>
                     <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card tilt-card">
                     <div class="profile-icon">🔴</div>
                     <div class="profile-name">EL POSTERGADOR</div>
                     <div class="profile-bar">██████████████</div>
                     <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card">
+                <div class="profile-card tilt-card">
                     <div class="profile-icon">⚫</div>
                     <div class="profile-name">EL FANTASMA</div>
                     <div class="profile-bar">██████████████</div>
                     <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.7);">
+            <p style="text-align: center; margin-top: 1.5rem; color: rgba(255,255,255,0.7); font-size: 0.9375rem;">
                 Cada perfil activa un sistema de cierre distinto. La IA detecta el perfil antes de que tu closer pierda el tiempo.
             </p>
-            <div style="text-align: center; margin-top: 1.5rem;">
-                <a href="#" class="btn btn-secondary">Ver el brief en acción →</a>
-            </div>
         </div>
     </section>
 
-    <!-- Results Section -->
     <section class="results" id="resultados">
         <div class="container">
             <div class="section-header">
@@ -1579,14 +1376,14 @@
                 </div>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial">
+                <div class="testimonial tilt-card">
                     <p class="testimonial-text">"Pensé que el problema era mi closer. El problema era que no tenía sistema. En 3 semanas el closing rate subió 14 puntos."</p>
                     <div class="testimonial-author">— Director de ventas</div>
                     <div class="testimonial-role">Programa de coaching · Ticket: $8,500</div>
                 </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">"El brief llega y el closer ya sabe exactamente cómo va a manejar esa llamada. Eso antes lo hacía yo manualmente en 2 horas por semana. Ahora es automático."</p>
-                    <div class="testimonial-author">— Fundador de agencia de marketing</div>
+                <div class="testimonial tilt-card">
+                    <p class="testimonial-text">"El brief llega y el closer ya sabe exactamente cómo va a manejar esa llamada. Eso antes lo hacía yo manualmente en 2 horas por semana."</p>
+                    <div class="testimonial-author">— Fundador de agencia</div>
                     <div class="testimonial-role">Servicio done-for-you · Ticket: $12,000</div>
                 </div>
             </div>
@@ -1600,14 +1397,13 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section class="how-it-works" id="como-funciona">
         <div class="container">
             <div class="section-header">
                 <div class="eyebrow">EL SISTEMA EN 2 PASOS</div>
                 <h2 class="section-title">Antes de cada llamada. Durante cada llamada.</h2>
             </div>
-            <div class="step">
+            <div class="step tilt-card">
                 <div class="step-header">
                     <span class="step-number">🤖 PASO 1 — ANTES (Instant Qualifier)</span>
                 </div>
@@ -1620,21 +1416,19 @@
                     <div class="brief-row">Objeción probable: <span class="brief-bar">████████████</span></div>
                     <div class="brief-row">Respuesta exacta: <span class="brief-bar">████████████</span></div>
                 </div>
-                <p style="color: rgba(255,255,255,0.6); font-style: italic; margin-top: 1rem;">Tu closer entra sabiendo cómo cerrar. No a descubrir quién tiene enfrente.</p>
             </div>
-            <div class="step">
+            <div class="step tilt-card">
                 <div class="step-header">
                     <span class="step-number">🎵 PASO 2 — DURANTE (Los 6 Sistemas)</span>
                 </div>
                 <p class="step-text"><strong>El Closing Cuántico™ define 6 sistemas de cierre.</strong><br><br>Uno para cada situación. Uno asignado en el brief antes de cada llamada.<br><br>Tu closer no decide cuál usar. Llega a ejecutar el correcto.</p>
-                <div style="text-align: center; margin-top: 1.5rem;">
+                <div style="text-align: center; margin-top: 1rem;">
                     <a href="https://diagnostico.closingcodeai.online" class="btn btn-secondary" target="_blank">Ver cómo se ve tu primer brief →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section" id="audit">
         <div class="container">
             <h2 class="cta-title">¿Cuánto está costando la improvisación?</h2>
@@ -1648,15 +1442,14 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pricing" id="planes">
         <div class="container">
             <div class="section-header">
                 <div class="eyebrow">UN PRODUCTO. UNA INVERSIÓN. UN RESULTADO.</div>
                 <h2 class="section-title">Un cierre adicional por mes cubre la inversión completa.</h2>
-                <p class="section-text">El sistema cuesta $500/mes.<br>Sin sistema pierdes hasta: $41,200/mes o más... (depende de tu ticket)</p>
+                <p class="section-text">El sistema cuesta $500/mes.<br>Sin sistema pierdes hasta: $41,200/mes o más...</p>
             </div>
-            <div class="pricing-card">
+            <div class="pricing-card tilt-card">
                 <div class="pricing-name">INSTANT QUALIFIER</div>
                 <div class="pricing-amount">$2,000</div>
                 <div class="pricing-period">setup único + $500/mes</div>
@@ -1673,59 +1466,40 @@
             </div>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Necesito GoHighLevel?
-                        <span>▼</span>
-                    </button>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Necesito GoHighLevel? <span>▼</span></button>
                     <div class="faq-answer">Para integración completa, sí. También funciona con HubSpot y cualquier CRM con webhook.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Cuánto tiempo toma el setup?
-                        <span>▼</span>
-                    </button>
-                    <div class="faq-answer">7 días desde la compra hasta el sistema activo. Nos encargamos de toda la parte técnica. Tu equipo necesita 45 minutos para el onboarding.</div>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Cuánto tiempo toma el setup? <span>▼</span></button>
+                    <div class="faq-answer">7 días desde la compra hasta el sistema activo. Nos encargamos de toda la parte técnica.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Y si el lead no contesta la llamada?
-                        <span>▼</span>
-                    </button>
-                    <div class="faq-answer">El sistema reintenta automáticamente hasta 2 veces en las primeras 2 horas. Si no contesta, lo marca en el reporte y tu closer decide si retomar manualmente.</div>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Y si el lead no contesta la llamada? <span>▼</span></button>
+                    <div class="faq-answer">El sistema reintenta automáticamente hasta 2 veces en las primeras 2 horas.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Funciona vendiendo en inglés a USA?
-                        <span>▼</span>
-                    </button>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Funciona vendiendo en inglés a USA? <span>▼</span></button>
                     <div class="faq-answer">Sí. Los 4 perfiles y los 6 sistemas de cierre son universales. El brief se genera en el idioma del prospecto.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Puedo revisar las conversaciones de la IA?
-                        <span>▼</span>
-                    </button>
-                    <div class="faq-answer">Sí. Recibes acceso a las grabaciones y transcripciones de cada llamada de cualificación, más el reporte mensual con scores y razones de rechazo.</div>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Puedo revisar las conversaciones de la IA? <span>▼</span></button>
+                    <div class="faq-answer">Sí. Recibes acceso a las grabaciones y transcripciones de cada llamada de cualificación.</div>
                 </div>
                 <div class="faq-item active">
-                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                        ¿Qué es exactamente el Closing Cuántico™?
-                        <span>▼</span>
-                    </button>
-                    <div class="faq-answer">La metodología propietaria que define los 4 perfiles de prospecto y los 6 sistemas de cierre. Se entrega completa en el onboarding. Es el núcleo del sistema — y la razón por la que funciona.</div>
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">¿Qué es exactamente el Closing Cuántico™? <span>▼</span></button>
+                    <div class="faq-answer">La metodología propietaria que define los 4 perfiles de prospecto y los 6 sistemas de cierre.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="sobre">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
                     <div class="about-photo-wrapper">
-                        <div class="about-photo">
-                            <img src="mauricio.jpg" alt="Mauricio Gallmur - Fundador de The Closing Code AI">
+                        <div class="about-photo tilt-card">
+                            <img src="mauricio.jpg" alt="Mauricio Gallmur">
                             <div class="about-photo-overlay">
                                 <div class="about-photo-name">MAURICIO GALLMUR</div>
                                 <div class="about-photo-role">Fundador, The Closing Code AI</div>
@@ -1747,8 +1521,7 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="cta-section" style="padding: 6rem 2rem;">
+    <section class="cta-section" style="padding: 4rem 1.5rem;">
         <div class="container">
             <h2 class="cta-title">¿Cuánto revenue está dejando tu equipo sobre la mesa cada mes?</h2>
             <p class="cta-text">Dos formas de saberlo:<br>el Closing Audit en 90 segundos, o una conversación directa.</p>
@@ -1756,47 +1529,36 @@
                 <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" target="_blank">📊 Hacer el Closing Audit</a>
                 <a href="https://calendly.com/mgallmur/45" class="btn btn-secondary" target="_blank">👤 Hablar con Mauricio</a>
             </div>
-            <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem;">
-                90 segundos · sin registro &nbsp;&nbsp;|&nbsp;&nbsp; 30 min · sin costo
-            </p>
-            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
-                Máximo 5 implementaciones nuevas por mes.
-            </p>
+            <p style="margin-top: 1rem; color: rgba(255,255,255,0.5); font-size: 0.8125rem;">90 segundos · sin registro | 30 min · sin costo</p>
+            <p style="margin-top: 0.25rem; color: rgba(255,255,255,0.4); font-size: 0.6875rem;">Máximo 5 implementaciones nuevas por mes.</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="footer-name">The Closing Code AI</span>
-                <span class="footer-tagline">Closing Cuántico™ — Metodología propietaria. Todos los derechos reservados.</span>
+                <span class="footer-tagline">Closing Cuántico™ — Metodología propietaria.</span>
             </div>
             <div class="footer-links">
                 <a href="privacy.html" class="footer-link">Privacy Policy</a>
                 <a href="terms.html" class="footer-link">Terms of Service</a>
             </div>
-            <div class="footer-copyright">
-                © 2026 Mauricio Gallmur<br>
-                hola@theclosingcodeai.online
-            </div>
+            <div class="footer-copyright">© 2026 Mauricio Gallmur<br>hola@theclosingcodeai.online</div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // Particle System
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let mouseX = 0;
-        let mouseY = 0;
+        let mouseX = 0, mouseY = 0;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
@@ -1804,29 +1566,17 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.size = Math.random() * 2 + 0.5;
+                this.opacity = Math.random() * 0.4 + 0.2;
             }
-
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-                // Mouse interaction
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 100) {
-                    this.x -= dx * 0.01;
-                    this.y -= dy * 0.01;
-                }
             }
-
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -1837,10 +1587,8 @@
 
         function initParticles() {
             particles = [];
-            const count = window.innerWidth < 768 ? 25 : 50;
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
+            const count = window.innerWidth < 768 ? 20 : 40;
+            for (let i = 0; i < count; i++) particles.push(new Particle());
         }
 
         function drawConnections() {
@@ -1849,12 +1597,11 @@
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 150) {
+                    if (dist < 120) {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - dist / 150)})`;
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.08 * (1 - dist / 120)})`;
                         ctx.stroke();
                     }
                 }
@@ -1863,12 +1610,7 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            
+            particles.forEach(p => { p.update(); p.draw(); });
             drawConnections();
             requestAnimationFrame(animateParticles);
         }
@@ -1876,19 +1618,31 @@
         initParticles();
         animateParticles();
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        // 3D Tilt Effect
+        const tiltElements = document.querySelectorAll('.tilt-card, .about-photo');
+        
+        tiltElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
         });
 
         // Navbar Scroll Effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
         // Smooth Scroll
@@ -1896,12 +1650,7 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
