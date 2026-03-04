@@ -187,8 +187,9 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 2rem 6rem;
             position: relative;
+            overflow: visible;
         }
 
         .hero-container {
@@ -302,13 +303,15 @@
             perspective: 1000px;
             width: 100%;
             max-width: 100%;
-            overflow: hidden;
+            overflow: visible;
+            padding: 40px 20px;
         }
         
         @media (max-width: 768px) {
             .hero-visual { 
                 transform: scale(0.85); 
                 margin: 0.5rem 0;
+                padding: 30px 15px;
             }
             .phone-wrapper {
                 box-shadow: 
@@ -320,6 +323,7 @@
         @media (max-width: 480px) {
             .hero-visual { 
                 transform: scale(0.75); 
+                padding: 25px 10px;
             }
         }
 
@@ -331,6 +335,7 @@
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.4s ease;
             transform-style: preserve-3d;
+            margin: 20px;
         }
 
         .phone-wrapper:hover {
