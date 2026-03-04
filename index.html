@@ -3,27 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Closing Code AI — Tu Closer Deja de Improvisar</title>
-    <meta name="description" content="Metodología de Closing Cuántico con IA. Tu closer deja de adivinar y empieza a cerrar de forma consistente.">
+    <title>The Closing Code AI — Closing Cuántico™</title>
+    <meta name="description" content="La metodología que la IA aplica en cada llamada de precualificación. Tu closer deja de adivinar. Empieza a cerrar de forma consistente.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ========================================
+           $500k USD DESIGN SYSTEM
+           ======================================== */
+        
         :root {
-            --void-black: #060610;
-            --void-black-light: #0a0a18;
-            --void-black-lighter: #121220;
+            /* Colors - Void & Nebula Theme */
+            --void-900: #030308;
+            --void-800: #060610;
+            --void-700: #0a0a18;
+            --void-600: #101028;
+            
+            /* Stark Accents */
             --stark-blue: #0066FF;
+            --stark-blue-glow: rgba(0, 102, 255, 0.5);
             --electric-cyan: #00D4FF;
-            --purple: #8B5CF6;
-            --white: #FFFFFF;
-            --gray-100: #F8FAFC;
-            --gray-200: #E2E8F0;
-            --gray-400: #94A3B8;
-            --gray-600: #475569;
-            --success: #10B981;
-            --danger: #EF4444;
-            --warning: #F59E0B;
+            --electric-cyan-glow: rgba(0, 212, 255, 0.4);
+            --nebula-purple: #8B5CF6;
+            --nebula-glow: rgba(139, 92, 246, 0.5);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00D4FF 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(0,102,255,0.4) 0%, rgba(0,212,255,0.2) 100%);
+            --gradient-purple: linear-gradient(135deg, #8B5CF6 0%, #0066FF 100%);
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(20px);
+            
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Shadows */
+            --shadow-glow-blue: 0 0 40px rgba(0, 102, 255, 0.3);
+            --shadow-glow-cyan: 0 0 60px rgba(0, 212, 255, 0.2);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -34,375 +69,277 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--void-black);
-            color: var(--white);
+            font-family: var(--font-body);
+            background: var(--void-800);
+            color: white;
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* ===== BACKGROUND EFFECTS ===== */
-        #particles-canvas {
+        /* ========================================
+           BACKGROUND EFFECTS - $500k Level
+           ======================================== */
+        
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.6;
-        }
-
-        .aurora-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            z-index: -1;
             overflow: hidden;
+            background: var(--void-800);
         }
 
-        .aurora-bg::before {
-            content: '';
+        /* Aurora Boreal Effect */
+        .aurora {
             position: absolute;
+            width: 200%;
+            height: 200%;
             top: -50%;
             left: -50%;
-            width: 200%;
-            height: 200%;
             background: 
-                radial-gradient(ellipse at 20% 20%, rgba(0, 102, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
-            animation: auroraMove 20s ease-in-out infinite;
-        }
-
-        @keyframes auroraMove {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(2%, 2%) rotate(1deg); }
-            50% { transform: translate(-1%, 3%) rotate(-1deg); }
-            75% { transform: translate(3%, -2%) rotate(2deg); }
-        }
-
-        .mouse-spotlight {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+                radial-gradient(ellipse at 20% 30%, rgba(0, 102, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 40%);
+            animation: auroraFlow 25s ease-in-out infinite;
             pointer-events: none;
-            z-index: 2;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
         }
 
-        .grid-3d {
-            position: fixed;
+        @keyframes auroraFlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(2%, -2%) rotate(1deg) scale(1.02); }
+            66% { transform: translate(-1%, 2%) rotate(-1deg) scale(0.98); }
+        }
+
+        /* Particle Canvas */
+        #particles-canvas {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
-            perspective: 1000px;
-            overflow: hidden;
         }
 
-        .grid-3d::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                linear-gradient(rgba(0, 102, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            transform: rotateX(60deg);
-            transform-origin: center top;
-            animation: gridMove 30s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: rotateX(60deg) translateY(0); }
-            100% { transform: rotateX(60deg) translateY(60px); }
-        }
-
-        /* ===== UTILITIES ===== */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-        }
-
-        .gradient-border {
-            position: relative;
-            background: var(--void-black-light);
-            border-radius: 16px;
-        }
-
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 17px;
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan), var(--purple));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gradient-border:hover::before {
-            opacity: 1;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            border: none;
-            min-height: 48px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
-            color: var(--white);
-            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--gray-200);
-            padding: 8px 16px;
-        }
-
-        .btn-ghost:hover {
-            color: var(--white);
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 0;
+            padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
-        .navbar.scrolled {
+        .nav.scrolled {
             background: rgba(6, 6, 16, 0.8);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .navbar .container {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 0.75rem;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: var(--electric-cyan);
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 2rem;
         }
 
-        .nav-links a {
-            color: var(--gray-200);
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.875rem;
             font-weight: 500;
-            transition: color 0.2s ease;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--white);
+        .nav-link:hover {
+            color: white;
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
             border: none;
-            color: var(--white);
-            font-size: 24px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* ===== HERO ===== */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 102, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========================================
+           HERO SECTION - $500k Level
+           ======================================== */
+        
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 0 80px;
+            padding: 8rem 2rem 4rem;
             position: relative;
         }
 
-        .hero-grid {
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 4rem;
             align-items: center;
         }
 
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .badge {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid rgba(0, 212, 255, 0.2);
             border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
             color: var(--electric-cyan);
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
         }
 
-        .badge svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 800;
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
         }
 
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
+        .hero-title span {
+            background: var(--gradient-purple);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-subheadline {
-            font-size: clamp(20px, 2.5vw, 28px);
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--electric-cyan);
             font-weight: 600;
-            color: var(--gray-200);
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
-        .hero p {
-            font-size: 17px;
-            color: var(--gray-400);
-            margin-bottom: 32px;
+        .hero-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
             line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 480px;
         }
 
+        /* Code Block */
         .code-block {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 20px 24px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
             line-height: 1.8;
-            margin-bottom: 32px;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 2rem;
+            overflow-x: auto;
         }
 
-        .code-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--electric-cyan), transparent);
+        .code-comment {
+            color: rgba(255, 255, 255, 0.4);
         }
 
-        .code-block .comment {
-            color: var(--gray-600);
-        }
-
-        .code-block .key {
+        .code-key {
             color: var(--electric-cyan);
         }
 
-        .code-block .value {
-            color: var(--purple);
-        }
-
-        .code-block .bool {
-            color: var(--success);
+        .code-value {
+            color: white;
         }
 
         .hero-ctas {
             display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
         .hero-metrics {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
 
         .metric {
@@ -410,136 +347,99 @@
         }
 
         .metric-value {
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .metric-label {
-            font-size: 13px;
-            color: var(--gray-400);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.25rem;
         }
 
-        .social-proof {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--gray-400);
-        }
-
-        .social-proof .check {
-            color: var(--success);
-        }
-
-        /* Hero Visual */
+        /* Phone Mockup 3D */
         .hero-visual {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .phone-mockup {
-            width: 300px;
-            height: 600px;
-            background: linear-gradient(145deg, #1a1a2e, #0f0f1a);
+            position: relative;
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
             border-radius: 40px;
             padding: 12px;
             box-shadow: 
-                0 50px 100px rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 0 60px rgba(0, 102, 255, 0.2);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
+                0 0 60px rgba(0, 102, 255, 0.3),
+                0 0 100px rgba(139, 92, 246, 0.2),
+                inset 0 0 60px rgba(0, 102, 255, 0.1);
+            animation: phoneFloat 6s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0) rotateY(-5deg); }
+            50% { transform: translateY(-20px) rotateY(-5deg); }
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: var(--void-black);
+            background: var(--void-800);
             border-radius: 32px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            display: flex;
-            flex-direction: column;
         }
 
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #000;
-            border-radius: 0 0 20px 20px;
-            z-index: 10;
-        }
-
-        .phone-content {
-            padding: 50px 20px 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .qualifier-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .qualifier-header h4 {
-            font-size: 14px;
-            color: var(--electric-cyan);
-            margin-bottom: 4px;
-        }
-
-        .qualifier-header p {
-            font-size: 12px;
-            color: var(--gray-600);
-        }
-
-        .qualifier-avatar {
+        .caller-avatar {
             width: 80px;
             height: 80px;
+            background: var(--gradient-purple);
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--stark-blue), var(--purple));
-            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
         }
 
-        .qualifier-status {
+        .caller-avatar svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .caller-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .caller-status {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 100px;
-            font-size: 12px;
-            color: var(--success);
-            margin-bottom: 20px;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--electric-cyan);
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
-            background: var(--success);
+            background: var(--electric-cyan);
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
@@ -547,683 +447,632 @@
             50% { opacity: 0.5; }
         }
 
-        .qualifier-info {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-
-        .info-row {
+        .audio-waves {
             display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 12px;
+            gap: 4px;
+            margin-top: 2rem;
+            height: 40px;
+            align-items: center;
         }
 
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: var(--gray-400);
-        }
-
-        .info-value {
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        .qualifier-progress {
-            margin-top: auto;
-        }
-
-        .progress-bar {
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+        .wave-bar {
+            width: 4px;
+            background: var(--gradient-primary);
             border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 8px;
+            animation: wave 1s ease-in-out infinite;
         }
 
-        .progress-fill {
-            height: 100%;
-            width: 85%;
-            background: linear-gradient(90deg, var(--stark-blue), var(--electric-cyan));
-            border-radius: 2px;
-            animation: progressFill 2s ease-out;
+        .wave-bar:nth-child(1) { height: 20%; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 80%; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 50%; animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
         }
 
-        @keyframes progressFill {
-            from { width: 0; }
+        .call-buttons {
+            position: absolute;
+            bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
         }
 
-        .progress-text {
-            font-size: 11px;
-            color: var(--gray-400);
-            text-align: center;
+        .call-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        /* ===== SECTIONS ===== */
+        .call-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .call-btn-decline {
+            background: #ef4444;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        .call-btn-accept {
+            background: #22c55e;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* ========================================
+           SECTIONS GENERAL
+           ======================================== */
+        
         section {
-            padding: 100px 0;
+            padding: 6rem 2rem;
             position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
+            max-width: 700px;
+            margin: 0 auto 4rem;
         }
 
         .eyebrow {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--electric-cyan);
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
-        .section-header h2 {
-            font-size: clamp(28px, 4vw, 44px);
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
-        .section-header p {
-            font-size: 18px;
-            color: var(--gray-400);
+        .section-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
         }
 
-        /* ===== EL PROBLEMA ===== */
-        .problem-box {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-
-        .problem-box p {
-            color: var(--gray-200);
-            font-size: 16px;
+        /* ========================================
+           PROBLEM SECTION
+           ======================================== */
+        
+        .problem {
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .problem-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin: 32px 0;
+            list-style: none;
+            margin: 2rem 0;
         }
 
         .problem-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 20px;
-            background: rgba(239, 68, 68, 0.05);
-            border: 1px solid rgba(239, 68, 68, 0.1);
-            border-radius: 12px;
-            font-size: 15px;
-            color: var(--gray-200);
+            gap: 1rem;
+            padding: 1rem 0;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .problem-item .x-mark {
-            color: var(--danger);
+        .problem-item::before {
+            content: '✕';
+            color: #ef4444;
             font-weight: 700;
+        }
+
+        .problem-result {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .problem-result strong {
+            color: #fca5a5;
         }
 
         .problem-closing {
             text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--white);
-            margin-top: 40px;
+            margin-top: 3rem;
+            font-size: 1.25rem;
         }
 
-        /* ===== CARDS GRID ===== */
+        .problem-closing strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========================================
+           SOLUTION CARDS
+           ======================================== */
+        
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            padding: 2rem;
+            transition: all 0.3s ease;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover {
+        .card:hover {
             transform: translateY(-8px);
             border-color: rgba(0, 102, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 102, 255, 0.1);
+            box-shadow: var(--shadow-glow-blue);
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
-            border-radius: 16px;
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
-        .feature-card p {
-            font-size: 15px;
-            color: var(--gray-400);
+        .card-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
             line-height: 1.6;
         }
 
-        /* ===== METODOLOGÍA ===== */
-        .methodology-cards {
+        /* ========================================
+           METHODOLOGY SECTION
+           ======================================== */
+        
+        .methodology {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .method-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 1.5rem;
         }
 
         .method-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 102, 255, 0.05);
+            border: 1px solid rgba(0, 102, 255, 0.2);
             border-radius: 20px;
-            padding: 40px 32px;
+            padding: 2rem;
             text-align: center;
-            position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         .method-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(0, 102, 255, 0.2);
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+            background: rgba(0, 102, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
         }
 
-        .method-number {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--stark-blue), var(--purple));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin: 0 auto 20px;
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .method-card h3 {
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
+        .method-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--electric-cyan);
+            margin-bottom: 0.75rem;
         }
 
-        .method-card p {
-            font-size: 14px;
-            color: var(--gray-400);
+        .method-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
         }
 
-        /* ===== PERFILES ===== */
+        /* ========================================
+           PROFILES SECTION
+           ======================================== */
+        
         .profiles-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .profile-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 24px;
+            padding: 2rem;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
         .profile-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateX(8px);
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .profile-icon {
-            font-size: 24px;
-        }
-
-        .profile-name {
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .profile-bar {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-
-        .profile-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--stark-blue), var(--electric-cyan));
-            border-radius: 3px;
-        }
-
-        .profile-meta {
-            font-size: 12px;
-            color: var(--gray-400);
-        }
-
-        .profile-closing {
-            text-align: center;
-            font-size: 18px;
-            color: var(--gray-200);
-            margin-top: 40px;
-        }
-
-        /* ===== RESULTADOS ===== */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .result-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .result-card:hover {
             border-color: rgba(0, 102, 255, 0.3);
             transform: translateY(-4px);
         }
 
-        .result-value {
-            font-size: 48px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
+        .profile-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-bar {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 0.5rem 0;
+            letter-spacing: 2px;
+        }
+
+        .profile-status {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========================================
+           RESULTS SECTION
+           ======================================== */
+        
+        .results {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .result-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
 
         .result-label {
-            font-size: 15px;
-            color: var(--gray-400);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
         }
 
-        /* Testimonios */
+        /* Testimonials */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 60px;
+            gap: 1.5rem;
         }
 
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 4px solid var(--electric-cyan);
-            border-radius: 0 16px 16px 0;
-            padding: 32px;
+        .testimonial {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
             position: relative;
         }
 
-        .testimonial-card::before {
-            content: '"';
+        .testimonial::before {
+            content: '';
             position: absolute;
-            top: 16px;
-            right: 24px;
-            font-size: 80px;
-            color: rgba(0, 212, 255, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
+            left: 0;
+            top: 2rem;
+            bottom: 2rem;
+            width: 3px;
+            background: var(--gradient-primary);
+            border-radius: 0 3px 3px 0;
         }
 
         .testimonial-text {
-            font-size: 18px;
-            font-style: italic;
-            color: var(--gray-200);
-            margin-bottom: 24px;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
         .testimonial-author {
-            font-size: 15px;
             font-weight: 600;
-            color: var(--white);
+            margin-bottom: 0.25rem;
         }
 
         .testimonial-role {
-            font-size: 13px;
-            color: var(--gray-400);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Integraciones */
+        /* Integrations */
         .integrations {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 40px;
+            gap: 1rem;
+            margin-top: 3rem;
             flex-wrap: wrap;
         }
 
         .integration-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 100px;
-            font-size: 14px;
-            color: var(--gray-200);
-            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
-        .integration-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(0, 102, 255, 0.3);
-        }
-
-        /* ===== CÓMO FUNCIONA ===== */
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
+        /* ========================================
+           HOW IT WORKS
+           ======================================== */
+        
         .step {
-            position: relative;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .step-number {
-            font-size: 80px;
-            font-weight: 800;
-            color: rgba(0, 102, 255, 0.1);
-            line-height: 1;
-            margin-bottom: 16px;
+            font-family: var(--font-mono);
+            color: var(--stark-blue);
+            font-weight: 600;
         }
 
-        .step h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
+        .step-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
         }
 
-        .step p {
-            font-size: 16px;
-            color: var(--gray-400);
-            margin-bottom: 24px;
+        .step-text {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
+        /* Brief Visual */
         .brief-visual {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+
+        .brief-header {
+            color: var(--electric-cyan);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .brief-row {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .brief-row:last-child {
-            border-bottom: none;
-        }
-
-        .brief-label {
-            color: var(--gray-400);
-            min-width: 100px;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .brief-bar {
-            flex: 1;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
+            font-family: var(--font-mono);
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
         }
 
-        .brief-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--stark-blue), var(--electric-cyan));
-            border-radius: 4px;
-        }
-
-        /* ===== CTA SECTIONS ===== */
+        /* ========================================
+           CTA SECTIONS
+           ======================================== */
+        
         .cta-section {
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(139, 92, 246, 0.05));
-            border: 1px solid rgba(0, 102, 255, 0.2);
-            border-radius: 24px;
-            padding: 80px 40px;
+            background: linear-gradient(180deg, rgba(0, 102, 255, 0.1) 0%, transparent 100%);
             text-align: center;
         }
 
-        .cta-section h2 {
-            font-size: clamp(28px, 4vw, 40px);
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
-        .cta-section p {
-            font-size: 18px;
-            color: var(--gray-400);
-            margin-bottom: 32px;
+        .cta-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
         }
 
-        .trust-badges {
+        .trust-signals {
             display: flex;
             justify-content: center;
-            gap: 24px;
-            margin-top: 24px;
-            font-size: 13px;
-            color: var(--gray-400);
+            gap: 2rem;
+            margin-top: 1.5rem;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        .trust-badges span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* ===== PRICING ===== */
-        .pricing-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 40px;
+        /* ========================================
+           PRICING
+           ======================================== */
+        
+        .pricing {
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 48px;
+            padding: 3rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 60px rgba(0, 102, 255, 0.1);
         }
 
         .pricing-card::before {
             content: '';
             position: absolute;
-            inset: -1px;
-            background: linear-gradient(135deg, var(--stark-blue), var(--purple));
-            border-radius: 25px;
-            z-index: -1;
-            opacity: 0.5;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
         }
 
-        .pricing-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 6px 14px;
-            background: linear-gradient(135deg, var(--stark-blue), var(--electric-cyan));
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 600;
+        .pricing-name {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--electric-cyan);
+            margin-bottom: 1.5rem;
         }
 
-        .pricing-price {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 8px;
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
-        .pricing-price span {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--gray-400);
+        .pricing-period {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
         }
 
-        .pricing-setup {
-            font-size: 16px;
-            color: var(--gray-400);
-            margin-bottom: 32px;
+        .pricing-note {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2rem;
         }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 32px;
+            text-align: left;
+            margin-bottom: 2rem;
         }
 
         .pricing-features li {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            font-size: 15px;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9375rem;
         }
 
         .pricing-features li::before {
             content: '✓';
-            width: 20px;
-            height: 20px;
-            background: rgba(16, 185, 129, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: var(--success);
+            color: var(--electric-cyan);
+            font-weight: 700;
         }
 
         /* FAQ */
-        .faq-container {
+        .faq-list {
             max-width: 800px;
-            margin: 60px auto 0;
+            margin: 3rem auto 0;
         }
 
         .faq-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
         }
 
         .faq-question {
             width: 100%;
-            padding: 24px 0;
+            padding: 1.25rem;
             background: none;
             border: none;
-            color: var(--white);
-            font-size: 17px;
-            font-weight: 600;
+            color: white;
             text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: color 0.2s ease;
-        }
-
-        .faq-question:hover {
-            color: var(--electric-cyan);
-        }
-
-        .faq-icon {
-            font-size: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
         }
 
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.25rem 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            display: none;
         }
 
         .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-bottom: 24px;
+            display: block;
         }
 
-        .faq-answer p {
-            color: var(--gray-400);
-            font-size: 15px;
-            line-height: 1.7;
+        /* ========================================
+           ABOUT SECTION
+           ======================================== */
+        
+        .about {
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        /* ===== ABOUT ===== */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
         }
 
@@ -1231,147 +1080,134 @@
             position: relative;
         }
 
-        .about-image img {
+        .about-photo {
             width: 100%;
             max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .about-content h2 {
-            font-size: clamp(28px, 3.5vw, 36px);
-            font-weight: 700;
-            margin-bottom: 24px;
+        .about-photo::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--stark-blue), var(--nebula-purple));
+            border-radius: 26px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(20px);
         }
 
-        .about-content p {
-            font-size: 17px;
-            color: var(--gray-200);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-signature {
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .about-info {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem;
+            border-radius: 12px;
         }
 
         .about-name {
-            font-size: 14px;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
-            color: var(--electric-cyan);
-            margin-bottom: 4px;
+            margin-bottom: 0.25rem;
         }
 
         .about-role {
-            font-size: 15px;
-            color: var(--gray-400);
+            font-size: 0.875rem;
+            color: var(--electric-cyan);
         }
 
-        /* ===== FINAL CTA ===== */
-        .final-cta {
-            text-align: center;
-            padding: 120px 0;
+        .about-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .final-cta h2 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 800;
-            margin-bottom: 16px;
+        .about-text p {
+            margin-bottom: 1rem;
         }
 
-        .final-cta p {
-            font-size: 18px;
-            color: var(--gray-400);
-            margin-bottom: 40px;
+        .about-highlight {
+            color: var(--stark-blue);
+            font-weight: 600;
         }
 
-        .final-cta .btns {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-
-        .scarcity {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 100px;
-            font-size: 14px;
-            color: var(--warning);
-        }
-
-        /* ===== FOOTER ===== */
+        /* ========================================
+           FOOTER
+           ======================================== */
+        
         footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .footer-name {
+            font-weight: 700;
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .footer-links {
             display: flex;
-            gap: 32px;
+            gap: 2rem;
         }
 
-        .footer-links a {
-            color: var(--gray-400);
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s ease;
+            font-size: 0.875rem;
         }
 
-        .footer-links a:hover {
-            color: var(--white);
+        .footer-link:hover {
+            color: white;
         }
 
-        .copyright {
-            font-size: 14px;
-            color: var(--gray-600);
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* ===== SCROLL REVEAL ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
-        .reveal-delay-6 { transition-delay: 0.6s; }
-
-        /* ===== RESPONSIVE ===== */
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        
         @media (max-width: 1024px) {
-            .hero-grid {
+            .hero-container {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                text-align: center;
             }
 
-            .hero-content {
-                max-width: 100%;
-                text-align: center;
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .hero-ctas {
@@ -1382,32 +1218,13 @@
                 justify-content: center;
             }
 
-            .social-proof {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .phone-mockup {
-                width: 260px;
-                height: 520px;
-            }
-
-            .methodology-cards {
-                grid-template-columns: 1fr;
+            .cards-grid,
+            .method-cards {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .about-image img {
-                max-width: 300px;
-                margin: 0 auto;
-                display: block;
             }
         }
 
@@ -1416,272 +1233,120 @@
                 display: none;
             }
 
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
-            .problem-list {
-                grid-template-columns: 1fr;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profiles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .cards-grid,
+            .method-cards,
+            .profiles-grid,
+            .results-grid,
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
-            .steps-container {
+            .hero-metrics {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .integrations {
-                gap: 16px;
+            .metric {
+                text-align: center;
             }
 
-            .integration-item {
-                padding: 10px 16px;
-                font-size: 13px;
-            }
-
-            .cta-section {
-                padding: 48px 24px;
-            }
-
-            .pricing-card {
-                padding: 32px 24px;
+            .trust-signals {
+                flex-direction: column;
+                gap: 0.5rem;
             }
 
             .footer-content {
                 flex-direction: column;
+                gap: 1.5rem;
                 text-align: center;
             }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .hero-metrics {
-                flex-direction: column;
-                gap: 24px;
-                text-align: center;
-            }
-
-            .phone-mockup {
-                width: 220px;
-                height: 440px;
-            }
-
-            .trust-badges {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .final-cta .btns {
-                flex-direction: column;
-            }
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(6, 6, 16, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 32px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu a {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 32px;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <!-- Background Effects -->
-    <canvas id="particles-canvas"></canvas>
-    <div class="aurora-bg"></div>
-    <div class="mouse-spotlight" id="spotlight"></div>
-    <div class="grid-3d"></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
-        <a href="#metodo" onclick="toggleMobileMenu()">El Método</a>
-        <a href="#como-funciona" onclick="toggleMobileMenu()">Cómo funciona</a>
-        <a href="#planes" onclick="toggleMobileMenu()">Planes</a>
-        <a href="#sobre" onclick="toggleMobileMenu()">Sobre</a>
-        <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" onclick="toggleMobileMenu()">Ver mi Revenue Gap</a>
+    <div class="bg-container">
+        <div class="aurora"></div>
+        <canvas id="particles-canvas"></canvas>
     </div>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
             <a href="#" class="logo">
-                <span>CC</span> | The Closing Code AI
+                <div class="logo-icon">CC</div>
+                <span class="logo-text">The Closing Code AI</span>
             </a>
             <div class="nav-links">
-                <a href="#metodo">El Método</a>
-                <a href="#como-funciona">Cómo funciona</a>
-                <a href="#planes">Planes</a>
-                <a href="#sobre">Sobre</a>
-                <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Ver mi Revenue Gap</a>
+                <a href="#problema" class="nav-link">El Método</a>
+                <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+                <a href="#planes" class="nav-link">Planes</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#audit" class="btn btn-primary">Ver mi Revenue Gap</a>
             </div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="badge reveal">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        Closing Cuántico™ — Metodología propietaria
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>⬡</span>
+                    Closing Cuántico™ — Metodología propietaria
+                </div>
+                <h1 class="hero-title">Tu closer no improvisa porque <span>quiere.</span></h1>
+                <div class="hero-subtitle">Improvisa porque no tiene un sistema.</div>
+                <p class="hero-text">
+                    Construí la metodología que la IA aplica en cada llamada de precualificación. Tu closer deja de adivinar. Empieza a cerrar de forma consistente.
+                </p>
+                <div class="code-block">
+                    <div class="code-comment">// 14 minutos antes de tu próxima llamada de ventas</div>
+                    <div><span class="code-key">perfil_detectado:</span> <span class="code-value">"[CLASIFICADO]"</span></div>
+                    <div><span class="code-key">sistema_asignado:</span> <span class="code-value">"[CLASIFICADO]"</span></div>
+                    <div><span class="code-key">brief_enviado:</span> <span class="code-value">true ✓</span></div>
+                    <div><span class="code-key">closer_preparado:</span> <span class="code-value">true ✓</span></div>
+                </div>
+                <div class="hero-ctas">
+                    <a href="#audit" class="btn btn-primary">📊 Calcular mi Revenue Gap</a>
+                    <a href="#como-funciona" class="btn btn-secondary">▶ Ver cómo funciona</a>
+                </div>
+                <div class="hero-metrics">
+                    <div class="metric">
+                        <div class="metric-value">+18pp</div>
+                        <div class="metric-label">Promedio de mejora en closing rate, mes 1</div>
                     </div>
-                    <h1 class="reveal reveal-delay-1">
-                        Tu closer no improvisa porque quiere.
-                    </h1>
-                    <p class="hero-subheadline reveal reveal-delay-2">
-                        Improvisa porque no tiene un sistema.
-                    </p>
-                    <p class="reveal reveal-delay-2">
-                        Construí la metodología que la IA aplica en cada llamada de precualificación. Tu closer deja de adivinar. Empieza a cerrar de forma consistente.
-                    </p>
-                    <div class="code-block reveal reveal-delay-3">
-                        <div class="comment">// 14 minutos antes de tu próxima llamada de ventas</div>
-                        <div><span class="key">perfil_detectado:</span>    <span class="value">"[CLASIFICADO]"</span></div>
-                        <div><span class="key">sistema_asignado:</span>    <span class="value">"[CLASIFICADO]"</span></div>
-                        <div><span class="key">brief_enviado:</span>       <span class="bool">true  ✓</span></div>
-                        <div><span class="key">closer_preparado:</span>    <span class="bool">true  ✓</span></div>
+                    <div class="metric">
+                        <div class="metric-value">$41K</div>
+                        <div class="metric-label">Revenue gap promedio por equipo sin sistema</div>
                     </div>
-                    <div class="hero-ctas reveal reveal-delay-4">
-                        <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary">
-                            → Calcular mi Revenue Gap
-                        </a>
-                        <a href="#como-funciona" class="btn btn-secondary">
-                            Ver cómo funciona ↓
-                        </a>
-                    </div>
-                    <div class="hero-metrics reveal reveal-delay-5">
-                        <div class="metric">
-                            <div class="metric-value">+18pp</div>
-                            <div class="metric-label">Closing rate</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">$41K</div>
-                            <div class="metric-label">Revenue gap</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">7 días</div>
-                            <div class="metric-label">Setup</div>
-                        </div>
-                    </div>
-                    <div class="social-proof reveal reveal-delay-6">
-                        <span class="check">✓</span>
-                        <span>Equipos de ventas high-ticket · tickets de $2K a $50K por deal</span>
+                    <div class="metric">
+                        <div class="metric-value">7 días</div>
+                        <div class="metric-label">De compra a sistema operativo</div>
                     </div>
                 </div>
-                <div class="hero-visual reveal reveal-delay-3">
-                    <div class="phone-mockup">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="phone-content">
-                                <div class="qualifier-header">
-                                    <div class="qualifier-avatar">👩</div>
-                                    <h4>María</h4>
-                                    <p>Instant Qualifier™</p>
-                                </div>
-                                <div class="qualifier-status">
-                                    <span class="status-dot"></span>
-                                    <span>En llamada activa</span>
-                                </div>
-                                <div class="qualifier-info">
-                                    <div class="info-row">
-                                        <span class="info-label">Perfil detectado</span>
-                                        <span class="info-value">Activador</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label">Sistema</span>
-                                        <span class="info-value">CQ-01</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label">Presupuesto</span>
-                                        <span class="info-value" style="color: var(--success);">✓ Confirmado</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label">Autoridad</span>
-                                        <span class="info-value" style="color: var(--success);">✓ Decisor</span>
-                                    </div>
-                                    <div class="info-row">
-                                        <span class="info-label">Urgencia</span>
-                                        <span class="info-value" style="color: var(--warning);">Alta</span>
-                                    </div>
-                                </div>
-                                <div class="qualifier-progress">
-                                    <div class="progress-bar">
-                                        <div class="progress-fill"></div>
-                                    </div>
-                                    <div class="progress-text">Precualificación 85% completada</div>
-                                </div>
-                            </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="caller-avatar">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="caller-name">María — Instant Qualifier™</div>
+                        <div class="caller-status">
+                            <span class="status-dot"></span>
+                            Cualificando lead...
+                        </div>
+                        <div class="audio-waves">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                        <div class="call-buttons">
+                            <button class="call-btn call-btn-decline">✕</button>
+                            <button class="call-btn call-btn-accept">📞</button>
                         </div>
                     </div>
                 </div>
@@ -1689,457 +1354,384 @@
         </div>
     </section>
 
-    <!-- El Problema -->
-    <section id="problema">
+    <!-- Problem Section -->
+    <section class="problem" id="problema">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">El Problema</div>
-                <h2>Tu closer terminó la semana. El 60% de sus llamadas no tenían ninguna posibilidad de cerrar.</h2>
-                <p>Tu closer, a quien le pagas comisiones mensuales está quemado. Y no es su culpa.</p>
+            <div class="section-header">
+                <div class="eyebrow">EL PROBLEMA</div>
+                <h2 class="section-title">Tu closer terminó la semana.<br>El 60% de sus llamadas no tenían ninguna posibilidad de cerrar.</h2>
+                <p class="section-text">Tu closer, a quien le pagas comisiones mensuales está quemado. Y no es su culpa.</p>
             </div>
-            <div class="problem-list">
-                <div class="problem-item reveal reveal-delay-1">
-                    <span class="x-mark">✕</span>
-                    <span>No tienen el presupuesto</span>
-                </div>
-                <div class="problem-item reveal reveal-delay-2">
-                    <span class="x-mark">✕</span>
-                    <span>No son el tomador de decisiones</span>
-                </div>
-                <div class="problem-item reveal reveal-delay-3">
-                    <span class="x-mark">✕</span>
-                    <span>Solo querían "información"</span>
-                </div>
-                <div class="problem-item reveal reveal-delay-4">
-                    <span class="x-mark">✕</span>
-                    <span>No tienen urgencia real</span>
-                </div>
+            <ul class="problem-list">
+                <li class="problem-item">No tienen el presupuesto para tu programa</li>
+                <li class="problem-item">No son el tomador de decisiones (necesitan "consultar")</li>
+                <li class="problem-item">Solo querían "información", nunca iban a comprar</li>
+                <li class="problem-item">No tienen urgencia real, solo curiosidad</li>
+            </ul>
+            <div class="problem-result">
+                <strong>El resultado:</strong> Tu equipo de ventas está quemado, tu closing rate se estancó en 10-20% o menos, y pagas comisiones por horas de filtrado manual.
             </div>
-            <div class="problem-box reveal reveal-delay-5">
-                <p><strong>El resultado:</strong> Tu equipo de ventas está quemado, tu closing rate se estancó en 10-20% o menos, y pagas comisiones por horas de filtrado manual.</p>
+            <div class="problem-closing">
+                <strong>No es que tu closer sea malo.</strong>
+                <span>Es que está hablando con la gente equivocada.</span>
             </div>
-            <p class="problem-closing reveal reveal-delay-6">No es que tu closer sea malo. Es que está hablando con la gente equivocada.</p>
         </div>
     </section>
 
-    <!-- La Solución -->
-    <section id="solucion">
+    <!-- Solution Section -->
+    <section class="solution" id="solucion">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header">
                 <div class="eyebrow">La Solución</div>
-                <h2>Un sistema que califica antes de que tu closer gaste un segundo.</h2>
+                <h2 class="section-title">Un Sistema de IA que Cualifica Leads Antes de que Lleguen a tu Equipo de Ventas</h2>
+                <p class="section-text">Tu closer pasa de 30 llamadas a 12. Pero cierra el doble.</p>
             </div>
             <div class="cards-grid">
-                <div class="feature-card reveal reveal-delay-1">
-                    <div class="feature-icon">📞</div>
-                    <h3>Llamada Automática en 5 Min</h3>
-                    <p>Cada lead recibe llamada de IA en 5 minutos. Sin demoras, sin leads fríos.</p>
+                <div class="card">
+                    <div class="card-icon">📞</div>
+                    <h3 class="card-title">Llamada Automática en 5 Min</h3>
+                    <p class="card-text">Cada lead que agenda recibe una llamada de IA en 5 minutos. Voz natural en español neutro.</p>
                 </div>
-                <div class="feature-card reveal reveal-delay-2">
-                    <div class="feature-icon">📋</div>
-                    <h3>Cualificación en 90 Segundos</h3>
-                    <p>Evalúa presupuesto, autoridad y urgencia. Solo lo esencial, sin perder tiempo.</p>
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3 class="card-title">Cualificación en 90 Segundos</h3>
+                    <p class="card-text">La IA evalúa presupuesto, autoridad y urgencia en menos de 2 minutos.</p>
                 </div>
-                <div class="feature-card reveal reveal-delay-3">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Solo Calificados a tu Closer</h3>
-                    <p>Solo prospectos listos para comprar llegan a tu equipo de ventas.</p>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Solo Calificados a tu Closer</h3>
+                    <p class="card-text">Tu equipo de ventas solo habla con prospectos listos para comprar.</p>
                 </div>
-                <div class="feature-card reveal reveal-delay-4">
-                    <div class="feature-icon">✕</div>
-                    <h3>Cancela Citas Automáticamente</h3>
-                    <p>Reuniones con no-calificados canceladas automáticamente. Tu calendario protegido.</p>
+                <div class="card">
+                    <div class="card-icon">✕</div>
+                    <h3 class="card-title">Cancela Citas Automáticamente</h3>
+                    <p class="card-text">Las reuniones con no-calificados se cancelan automáticamente. Tú ahorras tiempo.</p>
                 </div>
-                <div class="feature-card reveal reveal-delay-5">
-                    <div class="feature-icon">📊</div>
-                    <h3>Reportes Detallados</h3>
-                    <p>Sabes por qué cada lead fue rechazado. Datos claros para optimizar tu funnel.</p>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Reportes Detallados</h3>
+                    <p class="card-text">Sabes exactamente por qué cada lead fue rechazado. Datos para optimizar tu funnel.</p>
                 </div>
-                <div class="feature-card reveal reveal-delay-6">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Protege a tu Equipo</h3>
-                    <p>Tu closer deja de quemarse. Solo habla con prospectos que pueden y quieren comprar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- La Metodología -->
-    <section id="metodo">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">La Metodología</div>
-                <h2>El Closing Cuántico™ no es tecnología. Es el framework que la tecnología ejecuta.</h2>
-            </div>
-            <div class="methodology-cards">
-                <div class="method-card reveal reveal-delay-1">
-                    <div class="method-number">⬡</div>
-                    <h3>PERFIL CQ DETECTADO</h3>
-                    <p>La IA identifica cuál de los 4 perfiles es el prospecto</p>
-                </div>
-                <div class="method-card reveal reveal-delay-2">
-                    <div class="method-number">⚡</div>
-                    <h3>SISTEMA ASIGNADO</h3>
-                    <p>De los 6 sistemas, asigna el correcto</p>
-                </div>
-                <div class="method-card reveal reveal-delay-3">
-                    <div class="method-number">📋</div>
-                    <h3>BRIEF ENVIADO</h3>
-                    <p>A tu closer 15 minutos antes</p>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">Protege a tu Equipo</h3>
+                    <p class="card-text">Tu closer deja de quemarse. Mantiene energía para cerrar a los verdaderos compradores.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Los 4 Perfiles -->
-    <section id="perfiles">
+    <!-- Methodology Section -->
+    <section class="methodology" id="metodologia">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">El problema que nadie está nombrando</div>
-                <h2>Hay 4 tipos de prospectos. Tu closer probablemente aún no sabe identificarlos.</h2>
+            <div class="section-header">
+                <div class="eyebrow">LA METODOLOGÍA DETRÁS DEL SISTEMA</div>
+                <h2 class="section-title">El Closing Cuántico™ no es tecnología.<br>Es el framework que la tecnología ejecuta.</h2>
             </div>
+            <div class="method-cards">
+                <div class="method-card">
+                    <div class="method-icon">⬡</div>
+                    <h3 class="method-title">PERFIL CQ DETECTADO</h3>
+                    <p class="method-text">La IA identifica cuál de los 4 perfiles del Closing Cuántico™ es el prospecto.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">⚡</div>
+                    <h3 class="method-title">SISTEMA ASIGNADO</h3>
+                    <p class="method-text">De los 6 sistemas del Closing Cuántico™, asigna el correcto para ese prospecto.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon">📋</div>
+                    <h3 class="method-title">BRIEF ENVIADO</h3>
+                    <p class="method-text">A tu closer 15 minutos antes. Sin improvisación. Con sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles Section -->
+    <section class="profiles" id="perfiles">
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">EL PROBLEMA QUE NADIE ESTÁ NOMBRANDO</div>
+                <h2 class="section-title">Hay 4 tipos de prospectos.<br>Tu closer probablemente aún no sabe identificarlos.</h2>
+                <p class="section-text">Años analizando equipos de ventas high-ticket en el mercado hispanohablante y USA revelan el mismo patrón en cada negocio que no escala.</p>
+            </div>
+            <h3 style="text-align: center; margin-bottom: 2rem; font-family: var(--font-display); font-size: 1.25rem;">Los 4 Perfiles del Closing Cuántico™</h3>
             <div class="profiles-grid">
-                <div class="profile-card reveal reveal-delay-1">
-                    <div class="profile-header">
-                        <span class="profile-icon">⚡</span>
-                        <span class="profile-name">EL ACTIVADOR</span>
-                    </div>
-                    <div class="profile-bar">
-                        <div class="profile-fill" style="width: 95%;"></div>
-                    </div>
-                    <div class="profile-meta">Sistema asignado en el brief</div>
+                <div class="profile-card">
+                    <div class="profile-icon">⚡</div>
+                    <div class="profile-name">EL ACTIVADOR</div>
+                    <div class="profile-bar">██████████████</div>
+                    <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card reveal reveal-delay-2">
-                    <div class="profile-header">
-                        <span class="profile-icon">🔵</span>
-                        <span class="profile-name">EL ESCÉPTICO</span>
-                    </div>
-                    <div class="profile-bar">
-                        <div class="profile-fill" style="width: 75%;"></div>
-                    </div>
-                    <div class="profile-meta">Sistema asignado en el brief</div>
+                <div class="profile-card">
+                    <div class="profile-icon">🔵</div>
+                    <div class="profile-name">EL ESCÉPTICO</div>
+                    <div class="profile-bar">██████████████</div>
+                    <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card reveal reveal-delay-3">
-                    <div class="profile-header">
-                        <span class="profile-icon">🔴</span>
-                        <span class="profile-name">EL POSTERGADOR</span>
-                    </div>
-                    <div class="profile-bar">
-                        <div class="profile-fill" style="width: 45%;"></div>
-                    </div>
-                    <div class="profile-meta">Sistema asignado en el brief</div>
+                <div class="profile-card">
+                    <div class="profile-icon">🔴</div>
+                    <div class="profile-name">EL POSTERGADOR</div>
+                    <div class="profile-bar">██████████████</div>
+                    <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
-                <div class="profile-card reveal reveal-delay-4">
-                    <div class="profile-header">
-                        <span class="profile-icon">⚫</span>
-                        <span class="profile-name">EL FANTASMA</span>
-                    </div>
-                    <div class="profile-bar">
-                        <div class="profile-fill" style="width: 20%;"></div>
-                    </div>
-                    <div class="profile-meta">Sistema asignado en el brief</div>
+                <div class="profile-card">
+                    <div class="profile-icon">⚫</div>
+                    <div class="profile-name">EL FANTASMA</div>
+                    <div class="profile-bar">██████████████</div>
+                    <div class="profile-status">Sistema asignado en el brief</div>
                 </div>
             </div>
-            <p class="profile-closing reveal reveal-delay-5">Cada perfil activa un sistema de cierre distinto. La IA detecta el perfil antes de que tu closer pierda el tiempo.</p>
+            <p style="text-align: center; margin-top: 2rem; color: rgba(255,255,255,0.7);">
+                Cada perfil activa un sistema de cierre distinto. La IA detecta el perfil antes de que tu closer pierda el tiempo.
+            </p>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="#" class="btn btn-secondary">Ver el brief en acción →</a>
+            </div>
         </div>
     </section>
 
-    <!-- Resultados -->
-    <section id="resultados">
+    <!-- Results Section -->
+    <section class="results" id="resultados">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">Resultados</div>
-                <h2>Números que hablan por sí solos.</h2>
+            <div class="section-header">
+                <div class="eyebrow">LOS NÚMEROS HABLAN PRIMERO</div>
+                <h2 class="section-title">Resultados antes de explicaciones.</h2>
             </div>
             <div class="results-grid">
-                <div class="result-card reveal reveal-delay-1">
-                    <div class="result-value">19% → 37%</div>
-                    <div class="result-label">Incremento en closing rate</div>
+                <div class="result-card">
+                    <div class="result-number">19% → 37%</div>
+                    <div class="result-label">Closing rate después de 4 semanas con el sistema</div>
                 </div>
-                <div class="result-card reveal reveal-delay-2">
-                    <div class="result-value">$14,400</div>
-                    <div class="result-label">Revenue recuperado/mes</div>
+                <div class="result-card">
+                    <div class="result-number">$14,400/mes</div>
+                    <div class="result-label">Revenue adicional capturado mes 1 por equipo</div>
                 </div>
-                <div class="result-card reveal reveal-delay-3">
-                    <div class="result-value">11 días</div>
-                    <div class="result-label">Tiempo promedio de implementación</div>
+                <div class="result-card">
+                    <div class="result-number">11 días</div>
+                    <div class="result-label">Primer resultado medible desde el setup</div>
                 </div>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card reveal reveal-delay-1">
-                    <p class="testimonial-text">"Pensé que el problema era mi closer. Resultó que el 70% de sus llamadas eran con gente que nunca iba a comprar."</p>
-                    <div class="testimonial-author">Director de ventas</div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Pensé que el problema era mi closer. El problema era que no tenía sistema. En 3 semanas el closing rate subió 14 puntos."</p>
+                    <div class="testimonial-author">— Director de ventas</div>
                     <div class="testimonial-role">Programa de coaching · Ticket: $8,500</div>
                 </div>
-                <div class="testimonial-card reveal reveal-delay-2">
-                    <p class="testimonial-text">"El brief llega y el closer ya sabe exactamente qué sistema usar. Su confianza subió, y el closing rate también."</p>
-                    <div class="testimonial-author">Fundador de agencia</div>
-                    <div class="testimonial-role">Ticket: $12,000</div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"El brief llega y el closer ya sabe exactamente cómo va a manejar esa llamada. Eso antes lo hacía yo manualmente en 2 horas por semana. Ahora es automático."</p>
+                    <div class="testimonial-author">— Fundador de agencia de marketing</div>
+                    <div class="testimonial-role">Servicio done-for-you · Ticket: $12,000</div>
                 </div>
             </div>
-            <div class="integrations reveal reveal-delay-3">
-                <div class="integration-item">GoHighLevel</div>
-                <div class="integration-item">HubSpot</div>
-                <div class="integration-item">Cal.com</div>
-                <div class="integration-item">Calendly</div>
-                <div class="integration-item">WhatsApp</div>
+            <div class="integrations">
+                <div class="integration-item">✓ GoHighLevel</div>
+                <div class="integration-item">✓ HubSpot</div>
+                <div class="integration-item">✓ Cal.com</div>
+                <div class="integration-item">✓ Calendly</div>
+                <div class="integration-item">✓ WhatsApp</div>
             </div>
         </div>
     </section>
 
-    <!-- Cómo Funciona -->
-    <section id="como-funciona">
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="como-funciona">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">Cómo Funciona</div>
-                <h2>De lead a close, optimizado por IA.</h2>
+            <div class="section-header">
+                <div class="eyebrow">EL SISTEMA EN 2 PASOS</div>
+                <h2 class="section-title">Antes de cada llamada. Durante cada llamada.</h2>
             </div>
-            <div class="steps-container">
-                <div class="step reveal reveal-delay-1">
-                    <div class="step-number">01</div>
-                    <h3>El lead agenda. La IA actúa primero.</h3>
-                    <p>En el momento en que un lead agenda, María (nuestra IA) inicia la precualificación. Brief Pre-Llamada 15 min antes.</p>
-                    <div class="brief-visual">
-                        <div class="brief-row">
-                            <span class="brief-label">Presupuesto</span>
-                            <div class="brief-bar"><div class="brief-fill" style="width: 90%;"></div></div>
-                        </div>
-                        <div class="brief-row">
-                            <span class="brief-label">Autoridad</span>
-                            <div class="brief-bar"><div class="brief-fill" style="width: 100%;"></div></div>
-                        </div>
-                        <div class="brief-row">
-                            <span class="brief-label">Urgencia</span>
-                            <div class="brief-bar"><div class="brief-fill" style="width: 75%;"></div></div>
-                        </div>
-                        <div class="brief-row">
-                            <span class="brief-label">Perfil CQ</span>
-                            <div class="brief-bar"><div class="brief-fill" style="width: 100%;"></div></div>
-                        </div>
-                    </div>
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">🤖 PASO 1 — ANTES (Instant Qualifier)</span>
                 </div>
-                <div class="step reveal reveal-delay-2">
-                    <div class="step-number">02</div>
-                    <h3>El Closing Cuántico™ define 6 sistemas de cierre.</h3>
-                    <p>Tu closer no decide cuál usar. La metodología ya lo determinó basándose en el perfil detectado.</p>
-                    <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" style="margin-top: 16px;">
-                        Ver cómo se ve tu primer brief →
-                    </a>
+                <p class="step-text"><strong>El lead agenda. La IA actúa primero.</strong><br><br>Pre-cualifica al prospecto, detecta su perfil (uno de los 4 del Closing Cuántico™) y descarta a los que no van a comprar.<br><br>A los que sí califican, genera el Brief Pre-Llamada y lo envía a tu closer 15 minutos antes de la llamada:</p>
+                <div class="brief-visual">
+                    <div class="brief-header">⚡ BRIEF — Llamada en 15 min</div>
+                    <div class="brief-row">Perfil detectado: <span class="brief-bar">████████████</span></div>
+                    <div class="brief-row">Nivel de urgencia: <span class="brief-bar">████████████</span></div>
+                    <div class="brief-row">Sistema de cierre: <span class="brief-bar">████████████</span></div>
+                    <div class="brief-row">Objeción probable: <span class="brief-bar">████████████</span></div>
+                    <div class="brief-row">Respuesta exacta: <span class="brief-bar">████████████</span></div>
+                </div>
+                <p style="color: rgba(255,255,255,0.6); font-style: italic; margin-top: 1rem;">Tu closer entra sabiendo cómo cerrar. No a descubrir quién tiene enfrente.</p>
+            </div>
+            <div class="step">
+                <div class="step-header">
+                    <span class="step-number">🎵 PASO 2 — DURANTE (Los 6 Sistemas)</span>
+                </div>
+                <p class="step-text"><strong>El Closing Cuántico™ define 6 sistemas de cierre.</strong><br><br>Uno para cada situación. Uno asignado en el brief antes de cada llamada.<br><br>Tu closer no decide cuál usar. Llega a ejecutar el correcto.</p>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="https://diagnostico.closingcodeai.online" class="btn btn-secondary" target="_blank">Ver cómo se ve tu primer brief →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Closing Audit CTA -->
-    <section>
+    <!-- CTA Section -->
+    <section class="cta-section" id="audit">
         <div class="container">
-            <div class="cta-section reveal">
-                <h2>¿Cuánto está costando la improvisación?</h2>
-                <p>El revenue gap promedio es $41,200 al mes.</p>
-                <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" style="font-size: 18px; padding: 18px 36px;">
-                    → Calcular mi Revenue Gap
-                </a>
-                <div class="trust-badges">
-                    <span>✓ Sin spam</span>
-                    <span>✓ Sin pitch</span>
-                    <span>✓ Tu número real</span>
-                </div>
+            <h2 class="cta-title">¿Cuánto está costando la improvisación?</h2>
+            <p class="cta-text">El revenue gap promedio de un equipo sin sistema es $41,200 al mes.<br>El Closing Audit calcula el tuyo. 90 segundos. Sin registro previo.</p>
+            <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" target="_blank">→ Calcular mi Revenue Gap</a>
+            <div class="trust-signals">
+                <span>✓ Sin spam</span>
+                <span>✓ Sin pitch</span>
+                <span>✓ Tu número real</span>
             </div>
         </div>
     </section>
 
-    <!-- Planes -->
-    <section id="planes">
+    <!-- Pricing Section -->
+    <section class="pricing" id="planes">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="eyebrow">Planes</div>
-                <h2>Un cierre adicional por mes cubre la inversión completa.</h2>
+            <div class="section-header">
+                <div class="eyebrow">UN PRODUCTO. UNA INVERSIÓN. UN RESULTADO.</div>
+                <h2 class="section-title">Un cierre adicional por mes cubre la inversión completa.</h2>
+                <p class="section-text">El sistema cuesta $500/mes.<br>Sin sistema pierdes hasta: $41,200/mes o más... (depende de tu ticket)</p>
             </div>
-            <div class="pricing-container">
-                <div class="pricing-header reveal">
-                    <p style="color: var(--gray-400);">El sistema cuesta $500/mes. Sin sistema pierdes hasta: <strong style="color: var(--danger);">$41,200/mes</strong> o más...</p>
+            <div class="pricing-card">
+                <div class="pricing-name">INSTANT QUALIFIER</div>
+                <div class="pricing-amount">$2,000</div>
+                <div class="pricing-period">setup único + $500/mes</div>
+                <div class="pricing-note">Para equipos con 1 a 5 closers</div>
+                <ul class="pricing-features">
+                    <li>Pre-cualificación IA 24/7</li>
+                    <li>Detección de perfil Closing Cuántico™</li>
+                    <li>Brief Pre-Llamada automático (15 min antes)</li>
+                    <li>Reporte mensual del equipo</li>
+                    <li>Setup completo en 7 días</li>
+                    <li>Soporte directo con Mauricio</li>
+                </ul>
+                <a href="https://calendly.com/mgallmur/45" class="btn btn-primary" style="width: 100%; justify-content: center;" target="_blank">Agendar diagnóstico gratuito</a>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Necesito GoHighLevel?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">Para integración completa, sí. También funciona con HubSpot y cualquier CRM con webhook.</div>
                 </div>
-                <div class="pricing-card reveal reveal-delay-1">
-                    <div class="pricing-badge">Recomendado</div>
-                    <div class="pricing-price">$500<span>/mes</span></div>
-                    <div class="pricing-setup">+ $2,000 setup inicial</div>
-                    <p style="color: var(--gray-400); margin-bottom: 32px;">Para equipos con 1 a 5 closers</p>
-                    <ul class="pricing-features">
-                        <li>Pre-cualificación IA 24/7</li>
-                        <li>Detección de perfil CQ</li>
-                        <li>Brief automático (15 min antes)</li>
-                        <li>Reporte mensual</li>
-                        <li>Setup en 7 días</li>
-                        <li>Soporte directo</li>
-                    </ul>
-                    <a href="https://calendly.com/mgallmur/45" class="btn btn-primary" style="width: 100%;">
-                        Agendar diagnóstico gratuito →
-                    </a>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Cuánto tiempo toma el setup?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">7 días desde la compra hasta el sistema activo. Nos encargamos de toda la parte técnica. Tu equipo necesita 45 minutos para el onboarding.</div>
                 </div>
-                <div class="faq-container">
-                    <div class="faq-item reveal reveal-delay-2">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Cuánto tiempo toma implementar?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>La implementación completa toma 7 días hábiles. Incluye la configuración de integraciones, entrenamiento de la IA con tu oferta y pruebas finales.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item reveal reveal-delay-3">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Funciona con mi CRM actual?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Sí. Integramos con GoHighLevel, HubSpot, y la mayoría de CRMs populares. También ofrecemos integración vía API para sistemas personalizados.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item reveal reveal-delay-4">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Qué pasa si un lead calificado no cierra?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>El sistema aprende de cada interacción. Si detectamos patrones de leads que no cierran, ajustamos los criterios de cualificación para mejorar la precisión.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item reveal reveal-delay-5">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Necesito cambiar a mi equipo de closers?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No. El sistema está diseñado para potenciar a tus closers actuales, no reemplazarlos. Les damos las herramientas para cerrar más y mejor.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item reveal reveal-delay-6">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Hay contrato de permanencia?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No. Puedes cancelar en cualquier momento con 30 días de anticipación. Estamos seguros de que los resultados hablarán por sí solos.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item reveal reveal-delay-6">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            ¿Cómo empiezo?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Agenda un diagnóstico gratuito de 45 minutos. Analizaremos tu funnel actual y te mostraremos exactamente cuánto revenue estás dejando sobre la mesa.</p>
-                        </div>
-                    </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Y si el lead no contesta la llamada?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">El sistema reintenta automáticamente hasta 2 veces en las primeras 2 horas. Si no contesta, lo marca en el reporte y tu closer decide si retomar manualmente.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Funciona vendiendo en inglés a USA?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">Sí. Los 4 perfiles y los 6 sistemas de cierre son universales. El brief se genera en el idioma del prospecto.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Puedo revisar las conversaciones de la IA?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">Sí. Recibes acceso a las grabaciones y transcripciones de cada llamada de cualificación, más el reporte mensual con scores y razones de rechazo.</div>
+                </div>
+                <div class="faq-item active">
+                    <button class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+                        ¿Qué es exactamente el Closing Cuántico™?
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-answer">La metodología propietaria que define los 4 perfiles de prospecto y los 6 sistemas de cierre. Se entrega completa en el onboarding. Es el núcleo del sistema — y la razón por la que funciona.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Mauricio -->
-    <section id="sobre">
+    <!-- About Section -->
+    <section class="about" id="sobre">
         <div class="container">
             <div class="about-grid">
-                <div class="about-image reveal">
-                    <div style="width: 100%; max-width: 400px; aspect-ratio: 1; background: linear-gradient(135deg, var(--void-black-lighter), var(--void-black)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; box-shadow: 0 40px 80px rgba(0,0,0,0.4);">
-                        👨‍💼
+                <div class="about-image">
+                    <div class="about-photo">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                        <div class="about-info">
+                            <div class="about-name">MAURICIO GALLMUR</div>
+                            <div class="about-role">Fundador, The Closing Code AI</div>
+                        </div>
                     </div>
                 </div>
-                <div class="about-content reveal reveal-delay-1">
-                    <div class="eyebrow">Sobre el Fundador</div>
-                    <h2>La metodología viene del campo de batalla. No de la teoría.</h2>
-                    <p>Pasé años en el campo del closing high-ticket. Vi qué funcionaba y qué no. Documenté ese patrón. Construí el framework. Desarrollé la IA.</p>
-                    <p>Cada elemento del Closing Cuántico™ fue probado en llamadas reales, con prospectos reales, cerrando deals reales. No es teoría de ventas. Es un sistema que produce resultados consistentes.</p>
-                    <p><strong>The Closing Code AI es el resultado.</strong></p>
-                    <div class="about-signature">
-                        <div class="about-name">MAURICIO GALLMUR</div>
-                        <div class="about-role">Fundador</div>
+                <div class="about-content">
+                    <div class="eyebrow">QUIÉN LO CONSTRUYÓ</div>
+                    <h2 class="section-title">La metodología viene del campo de batalla. No de la teoría.</h2>
+                    <div class="about-text">
+                        <p>Pasé años en el campo del closing high-ticket — primero como closer, luego construyendo <span class="about-highlight">equipos ganadores</span> en el mercado hispanohablante y USA.</p>
+                        <p>Cada equipo fallaba por la misma razón: el closer usaba la estrategia incorrecta con el tipo de prospecto equivocado.</p>
+                        <p>Documenté ese patrón. Construí el framework. Desarrollé la IA que lo ejecuta en tiempo real.</p>
+                        <p><strong>The Closing Code AI es el resultado.</strong></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="final-cta">
+    <!-- Final CTA -->
+    <section class="cta-section" style="padding: 6rem 2rem;">
         <div class="container">
-            <h2 class="reveal">¿Cuánto revenue está dejando tu equipo sobre la mesa cada mes?</h2>
-            <p class="reveal reveal-delay-1">Descúbrelo en 5 minutos. Sin compromiso.</p>
-            <div class="btns reveal reveal-delay-2">
-                <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary">
-                    Hacer el Closing Audit
-                </a>
-                <a href="https://calendly.com/mgallmur/45" class="btn btn-secondary">
-                    Hablar con Mauricio
-                </a>
+            <h2 class="cta-title">¿Cuánto revenue está dejando tu equipo sobre la mesa cada mes?</h2>
+            <p class="cta-text">Dos formas de saberlo:<br>el Closing Audit en 90 segundos, o una conversación directa.</p>
+            <div class="hero-ctas" style="justify-content: center;">
+                <a href="https://diagnostico.closingcodeai.online" class="btn btn-primary" target="_blank">📊 Hacer el Closing Audit</a>
+                <a href="https://calendly.com/mgallmur/45" class="btn btn-secondary" target="_blank">👤 Hablar con Mauricio</a>
             </div>
-            <div class="scarcity reveal reveal-delay-3">
-                <span>⚡</span>
-                <span>Máximo 5 implementaciones nuevas por mes.</span>
-            </div>
+            <p style="margin-top: 1.5rem; color: rgba(255,255,255,0.5); font-size: 0.875rem;">
+                90 segundos · sin registro &nbsp;&nbsp;|&nbsp;&nbsp; 30 min · sin costo
+            </p>
+            <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
+                Máximo 5 implementaciones nuevas por mes.
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms</a>
-                </div>
-                <div class="copyright">© 2026 Mauricio Gallmur</div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-name">The Closing Code AI</span>
+                <span class="footer-tagline">Closing Cuántico™ — Metodología propietaria. Todos los derechos reservados.</span>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Mauricio Gallmur<br>
+                hola@theclosingcodeai.online
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
-        }
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mouse Spotlight
-        const spotlight = document.getElementById('spotlight');
-        let mouseX = 0, mouseY = 0;
-        let spotlightX = 0, spotlightY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function updateSpotlight() {
-            spotlightX += (mouseX - spotlightX) * 0.1;
-            spotlightY += (mouseY - spotlightY) * 0.1;
-            spotlight.style.left = spotlightX + 'px';
-            spotlight.style.top = spotlightY + 'px';
-            requestAnimationFrame(updateSpotlight);
-        }
-        updateSpotlight();
-
-        // Particles Canvas
+        // Particle System
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 60;
-        const connectionDistance = 120;
-        const mouseDistance = 150;
+        let mouseX = 0;
+        let mouseY = 0;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
@@ -2149,7 +1741,8 @@
                 this.y = Math.random() * canvas.height;
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
+                this.size = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
             }
 
             update() {
@@ -2162,123 +1755,87 @@
                 // Mouse interaction
                 const dx = mouseX - this.x;
                 const dy = mouseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < mouseDistance) {
-                    const force = (mouseDistance - distance) / mouseDistance;
-                    this.vx -= (dx / distance) * force * 0.02;
-                    this.vy -= (dy / distance) * force * 0.02;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 100) {
+                    this.x -= dx * 0.01;
+                    this.y -= dy * 0.01;
                 }
             }
 
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 212, 255, 0.6)';
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 212, 255, ${this.opacity})`;
                 ctx.fill();
             }
         }
 
         function initParticles() {
             particles = [];
-            for (let i = 0; i < particleCount; i++) {
+            const count = window.innerWidth < 768 ? 25 : 50;
+            for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
+            }
+        }
+
+        function drawConnections() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - dist / 150)})`;
+                        ctx.stroke();
+                    }
+                }
             }
         }
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((particle, i) => {
-                particle.update();
-                particle.draw();
-
-                // Connect particles
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[j].x - particle.x;
-                    const dy = particles[j].y - particle.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.moveTo(particle.x, particle.y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 102, 255, ${0.2 * (1 - distance / connectionDistance)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
-
+            
+            drawConnections();
             requestAnimationFrame(animateParticles);
         }
 
         initParticles();
         animateParticles();
 
-        // Scroll Reveal
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
 
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // FAQ Toggle
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(faq => {
-                faq.classList.remove('active');
-            });
-            
-            // Open clicked if wasn't active
-            if (!isActive) {
-                item.classList.add('active');
+        // Navbar Scroll Effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        }
+        });
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.metric-value, .result-value');
-            counters.forEach(counter => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            counter.style.animation = 'none';
-                            counter.offsetHeight; // Trigger reflow
-                            counter.style.animation = null;
-                        }
-                    });
-                });
-                observer.observe(counter);
-            });
-        }
-        animateCounters();
-
-        // Smooth Scroll for Anchor Links
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
