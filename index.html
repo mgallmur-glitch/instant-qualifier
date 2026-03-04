@@ -306,27 +306,42 @@
         }
         
         @media (max-width: 768px) {
-            .hero-visual { transform: scale(0.85); }
+            .hero-visual { 
+                transform: scale(0.9); 
+                margin: 1rem 0;
+            }
+            .phone-wrapper {
+                animation: phoneFloatMobile 5s ease-in-out infinite;
+            }
+            @keyframes phoneFloatMobile {
+                0%, 100% { transform: translateY(0) rotateY(-5deg); }
+                50% { transform: translateY(-10px) rotateY(5deg); }
+            }
         }
         
         @media (max-width: 480px) {
-            .hero-visual { transform: scale(0.75); }
+            .hero-visual { 
+                transform: scale(0.8); 
+                margin: 0.5rem 0;
+            }
         }
 
         .phone-wrapper {
             position: relative;
-            padding: 4px;
+            padding: 3px;
             border-radius: 44px;
-            background: linear-gradient(0deg, rgba(0,212,255,0.3), rgba(0,102,255,0.3));
-            animation: borderRotate 4s linear infinite;
+            background: linear-gradient(135deg, rgba(0,212,255,0.4) 0%, rgba(0,102,255,0.3) 50%, rgba(139,92,246,0.3) 100%);
             box-shadow: 
-                0 0 80px rgba(0, 212, 255, 0.4),
-                0 0 120px rgba(0, 102, 255, 0.2);
+                0 0 60px rgba(0, 212, 255, 0.3),
+                0 0 100px rgba(0, 102, 255, 0.2),
+                0 0 140px rgba(139, 92, 246, 0.15);
+            animation: phoneFloat 6s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes borderRotate {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         .phone-mockup {
@@ -1691,11 +1706,15 @@
         initParticles();
         animateParticles();
 
-        // 3D Tilt Effect
-        const tiltElements = document.querySelectorAll('.tilt-card, .about-photo');
+        // 3D Tilt Effect - Desktop & Mobile
+        const tiltElements = document.querySelectorAll('.tilt-card, .about-photo, .phone-wrapper');
+        
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
         
         tiltElements.forEach(el => {
+            // Mouse events for desktop
             el.addEventListener('mousemove', (e) => {
+                if (isTouchDevice) return;
                 const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
@@ -1707,9 +1726,31 @@
             });
             
             el.addEventListener('mouseleave', () => {
+                if (isTouchDevice) return;
                 el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
             });
+            
+            // Touch events for mobile - subtle parallax
+            el.addEventListener('touchstart', (e) => {
+                el.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(-5deg) scale3d(1.03, 1.03, 1.03)';
+            }, { passive: true });
+            
+            el.addEventListener('touchend', () => {
+                el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            }, { passive: true });
         });
+        
+        // Add subtle parallax on scroll for mobile
+        if (isTouchDevice) {
+            const phoneWrapper = document.querySelector('.phone-wrapper');
+            if (phoneWrapper) {
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    const rotateY = Math.sin(scrollY * 0.002) * 10;
+                    phoneWrapper.style.transform = `perspective(1000px) rotateY(${rotateY}deg)`;
+                }, { passive: true });
+            }
+        }
 
         // Navbar Scroll Effect
         const nav = document.getElementById('nav');
